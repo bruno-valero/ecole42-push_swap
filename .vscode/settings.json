@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"stack.h": "c",
+		"libft.h": "c",
+		"push_swap.h": "c",
+		"memory_resource": "c"
+	}
+}

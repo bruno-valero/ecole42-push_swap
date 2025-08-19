@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/19 16:02:17 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/19 17:06:02 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,10 @@ typedef struct s_ps_stack
 */
 typedef struct s_push_swap_ops
 {
-	int			(*rotate)(t_ps_stack *push_swap);
-	int			(*rotate_both)(
-			t_ps_stack *push_swap_a, t_ps_stack *push_swap_b);
-	int			(*rotate_reverse)(t_ps_stack *push_swap);
-	int			(*rotate_reverse_both)(
-			t_ps_stack *push_swap_a, t_ps_stack *push_swap_b);
+	int			(*rotate)(t_ps_stack *ps_sptack);
+	int			(*rotate_both)(t_push_swap	*push_swap);
+	int			(*rotate_reverse)(t_ps_stack *ps_stack);
+	int			(*rotate_reverse_both)(t_push_swap	*push_swap);
 	int			(*swap)(t_ps_stack *push_swap);
 	int			(*swap_both)(t_ps_stack *push_swap_a, t_ps_stack *push_swap_b);
 	int			(*stack1_push_to_stack2)(
@@ -62,11 +60,10 @@ void	ps_stack_destroy(
 void	push_swap_ops_destroy(t_push_swap_ops	**self);
 
 // ----------- rotate ops -----------
-int		rotate_stack(t_ps_stack *push_swap);
-int		rotate_stack_both(t_ps_stack *push_swap_a, t_ps_stack *push_swap_b);
-int		rotate_reverse_stack(t_ps_stack *push_swap);
-int		rotate_reverse_stack_both(
-			t_ps_stack *push_swap_a, t_ps_stack *push_swap_b);
+int		rotate_stack(t_ps_stack *ps_sptack);
+int		rotate_stack_both(t_push_swap	*push_swap);
+int		rotate_reverse_stack(t_ps_stack *ps_stack);
+int		rotate_reverse_stack_both(t_push_swap	*push_swap);
 // -	---------- swap ops -----------
 int		swap_stack(t_ps_stack *push_swap);
 int		swap_stack_both(t_ps_stack *push_swap_a, t_ps_stack *push_swap_b);

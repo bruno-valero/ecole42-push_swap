@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:35:01 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/18 20:05:32 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:27:33 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# ifndef STDLIB
-#  define STDLIB
 #  include <stdlib.h>
-# endif
-
 # include <unistd.h>
 # include "stack.h"
 # include "libstr.h"
+# include "libft_utils.h"
 
 typedef struct s_list
 {

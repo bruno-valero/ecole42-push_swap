@@ -1,25 +1,31 @@
 NAME = push_swap
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-INCLUDES = -I includes -I $(LIBFT_DIR) -I $(LIBFT_DIR)/src/lists/stack/includes
+INCLUDES = -I . -I $(LIBFT_DIR)/includes -I $(LIBFT_DIR)/dependency_includes
 CC = cc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
 SRC_FILES = src/teste.c src/ops_swap_stacks.c
+SLEEP = 0.05
 
 all: $(NAME)
 
 $(NAME): $(SRC_FILES) $(LIBFT)
-	$(CC) $(CFLAGS) $^ -o $@
+	@echo ">> compiling './$@'..." && sleep $(SLEEP)
+	@$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@echo ">> compiling './$@'..." && sleep $(SLEEP)
+	@make -s -C $(LIBFT_DIR)
 
 clean:
-	make -C $(LIBFT_DIR)
+	@echo ">> cleanning './$(LIBFT_DIR)'..." && sleep $(SLEEP)
+	@make -s -C $(LIBFT_DIR)
 
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
-	rm $(NAME)
+	@echo ">> deletting './$(LIBFT)'..." && sleep $(SLEEP)
+	@make -s -C $(LIBFT_DIR) fclean
+	@echo ">> deletting './$(NAME)'..." && sleep $(SLEEP)
+	@rm $(NAME)
 
 re: fclean all
 

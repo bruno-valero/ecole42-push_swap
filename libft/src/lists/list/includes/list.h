@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 18:53:40 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/17 19:05:47 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/20 13:55:48 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 
-# ifndef STDLIB
-#  define STDLIB
 #  include <stdlib.h>
-# endif
 
 typedef struct s_list_node
 {

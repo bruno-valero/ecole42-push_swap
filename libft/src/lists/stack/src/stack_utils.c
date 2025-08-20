@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:06:57 by valero            #+#    #+#             */
-/*   Updated: 2025/08/17 16:44:32 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/20 13:15:42 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	stack_delete_node(t_stack_node **node_ref,
 	node = *node_ref;
 	if (!node_ref || !node)
 		return (0);
-	del_node_content(node->content);
+	del_node_content(&node->content);
 	free(node);
 	node = NULL;
 	return (1);

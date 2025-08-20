@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ops_swap_stacks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:10:19 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/19 17:12:18 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/20 12:29:42 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	swap_stack(t_ps_stack *ps_stack)
 	return (!!write(1, "sb\n", 3));
 }
 
-int	swap_stack_both(t_push_swap	*push_swap)
+int	swap_stack_both(t_push_swap *push_swap)
 {
 	if (!push_swap || !push_swap->stack_a || !push_swap->stack_a->stack
 		|| !push_swap->stack_b || !push_swap->stack_b->stack)
@@ -39,8 +39,10 @@ int	swap_stack_both(t_push_swap	*push_swap)
 	return (!!write(1, "ss\n", 3));
 }
 
-int	stack1_push_to_stack2(t_push_swap	*push_swap, int push_a_to_b)
+int	stack1_push_to_stack2(t_push_swap *push_swap, int push_a_to_b)
 {
+	int	transfer_succeeded;
+
 	if (!push_swap || !push_swap->stack_a || !push_swap->stack_a->stack
 		|| !push_swap->stack_b || !push_swap->stack_b->stack)
 		return (0);
@@ -48,13 +50,15 @@ int	stack1_push_to_stack2(t_push_swap	*push_swap, int push_a_to_b)
 		return (0);
 	if (push_a_to_b)
 	{
-		if (!push_swap->stack_a->stack->transfer_top(
-				push_swap->stack_a->stack, push_swap->stack_b->stack))
+		transfer_succeeded = push_swap->stack_a->stack->transfer_top(
+				push_swap->stack_a->stack, push_swap->stack_b->stack);
+		if (!transfer_succeeded)
 			return (0);
 		return (!!write(1, "pb\n", 3));
 	}
-	if (!push_swap->stack_b->stack->transfer_top(
-			push_swap->stack_b->stack, push_swap->stack_a->stack))
+	transfer_succeeded = push_swap->stack_b->stack->transfer_top(
+			push_swap->stack_b->stack, push_swap->stack_a->stack);
+	if (!transfer_succeeded)
 		return (0);
 	return (!!write(1, "pa\n", 3));
 }

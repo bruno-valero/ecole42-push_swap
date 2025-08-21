@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 16:04:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 17:01:39 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,11 @@ void	ps_stack_destroy(t_ps_stack	**self)
 	*self = NULL;
 }
 
-t_ps_node_content	*new_ps_node_content(int number)
+void	*destroy_ps_stacks(t_ps_stack *stack_a, t_ps_stack *stack_b)
 {
-	t_ps_node_content	*node;
-
-	node = malloc(sizeof(t_ps_node_content));
-	if (!node)
-		return (NULL);
-	node->value = number;
-	node->target_node = NULL;
-	return (node);
-}
-
-int	compare_ps_node(void *self_content, void *content)
-{
-	t_ps_node_content	*s_cont;
-	t_ps_node_content	*cont;
-
-	s_cont = (t_ps_node_content *)self_content;
-	cont = (t_ps_node_content *)content;
-	return (s_cont->value == (cont)->value);
-}
-
-void	ps_node_content_destroy(void *node)
-{
-	t_ps_node_content	**ps_node_content;
-
-	ps_node_content = (t_ps_node_content **)node;
-	free(*ps_node_content);
-	*ps_node_content = NULL;
+	if (stack_a && stack_a->stack)
+		stack_a->destroy(&stack_a);
+	if (stack_b && stack_b->stack)
+		stack_b->destroy(&stack_b);
+	return (NULL);
 }

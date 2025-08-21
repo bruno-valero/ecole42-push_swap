@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 15:56:33 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 17:02:28 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ t_push_swap	*new_push_swap(void)
 	t_push_swap	*push_swap;
 	t_ps_stack	*stack_a;
 	t_ps_stack	*stack_b;
+
 	stack_a = new_ps_stack(1);
-	if (!stack_a)
-		return (NULL);
 	stack_b = new_ps_stack(0);
-	if (!stack_b)
-		return (NULL);
 	push_swap = malloc(sizeof(t_push_swap));
 	if (!push_swap)
+	{
+		destroy_ps_stacks(stack_a, stack_b);
 		return (NULL);
+	}
 	push_swap->stack_a = stack_a;
 	push_swap->stack_b = stack_b;
 	push_swap->ops = new_push_swap_ops();

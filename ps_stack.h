@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 15:51:05 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 17:04:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void				ps_stack_update_on_transfer(
 						t_ps_stack *self, t_ps_stack *other_stack);
 int					compare_ps_node(void *self_content, void *content);
 void				ps_node_content_destroy(void *node);
+void				*destroy_ps_stacks(
+						t_ps_stack *stack_a, t_ps_stack *stack_b);
 
 #endif

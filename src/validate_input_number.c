@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 14:47:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 16:04:02 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 	if (!splitted_numbers)
 		return (0);
 	split_len = 0;
-	while (splitted_numbers[++split_len])
+	while (splitted_numbers[split_len])
 		split_len++;
 	while (--split_len >= 0)
 	{

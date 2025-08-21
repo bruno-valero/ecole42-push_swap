@@ -6,13 +6,11 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 13:58:38 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 16:04:11 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ps_node_content_destroy(void *node);
 
 t_ps_stack	*new_ps_stack(int is_stack_a)
 {

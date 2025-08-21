@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 14:33:28 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 15:56:33 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ int	fill_stack_a(t_push_swap *self, int number)
 	new_node = self->stack_a->stack->create_node(content);
 	if (!self->stack_a->stack->push_unique(
 			self->stack_a->stack, new_node, self->stack_a->compare_node))
+	{
+		ps_node_content_destroy(&new_node);
 		return (0);
+	}
 	return (1);
 }
 

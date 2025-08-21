@@ -9,6 +9,15 @@
 		"stdlib.h": "c",
 		"type_traits": "c",
 		"validate.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"push_swap_ops.h": "c",
+		"array": "c",
+		"unordered_map": "c",
+		"memory": "c",
+		"string_view": "c",
+		"ostream": "c",
+		"streambuf": "c",
+		"functional": "c",
+		"tuple": "c"
 	}
 }

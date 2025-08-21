@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 16:37:43 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 18:39:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	print_stack(push_swap->stack_a);
-	push_swap->ops->rotate_reverse(push_swap->stack_a);
-	push_swap->ops->push_stack1_to_stack2(push_swap, 1);
-	push_swap->ops->rotate(push_swap->stack_a);
-	push_swap->ops->push_stack1_to_stack2(push_swap, 1);
-	push_swap->ops->rotate(push_swap->stack_b);
-	push_swap->ops->rotate_reverse(push_swap->stack_b);
+	push_swap->ops->rra(push_swap);
+	push_swap->ops->pb(push_swap);
+	push_swap->ops->ra(push_swap);
+	push_swap->ops->pb(push_swap);
+	push_swap->ops->rb(push_swap);
+	push_swap->ops->rrb(push_swap);
 	print_stack(push_swap->stack_a);
 	print_stack(push_swap->stack_b);
 	printf("stack_a.bigger: %d, stack_a.smaller: %d\n", push_swap->stack_a->bigger, push_swap->stack_a->smaller);
 	printf("stack_b.bigger: %d, stack_b.smaller: %d\n", push_swap->stack_b->bigger, push_swap->stack_b->smaller);
-	push_swap->ops->push_stack1_to_stack2(push_swap, 0);
+	push_swap->ops->pa(push_swap);
 	print_stack(push_swap->stack_a);
 	print_stack(push_swap->stack_b);
 	return (0);

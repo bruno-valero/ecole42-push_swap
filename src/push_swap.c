@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 17:02:28 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 18:41:02 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,17 @@ static t_push_swap_ops	*new_push_swap_ops(void)
 	ps_ops = malloc(sizeof(t_push_swap_ops));
 	if (!ps_ops)
 		return (NULL);
-	ps_ops->rotate = rotate_stack;
-	ps_ops->rotate_both = rotate_stack_both;
-	ps_ops->rotate_reverse = rotate_reverse_stack;
-	ps_ops->rotate_reverse_both = rotate_reverse_stack_both;
-	ps_ops->push_stack1_to_stack2 = push_stack1_to_stack2;
-	ps_ops->swap = swap_stack;
-	ps_ops->swap_both = swap_stack_both;
+	ps_ops->sa = sa;
+	ps_ops->sb = sb;
+	ps_ops->ss = ss;
+	ps_ops->pa = pa;
+	ps_ops->pb = pb;
+	ps_ops->ra = ra;
+	ps_ops->rb = rb;
+	ps_ops->rr = rr;
+	ps_ops->rra = rra;
+	ps_ops->rrb = rrb;
+	ps_ops->rrr = rrr;
 	ps_ops->destroy = push_swap_ops_destroy;
 	return (ps_ops);
 }

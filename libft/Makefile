@@ -9,7 +9,7 @@ LIBSTR = $(LIBSTR_PATH)/libstr.a
 INCLUDES = -I ./includes -I $(STACK_PATH)/includes -I $(LIBSTR_PATH)/includes
 CC = cc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
-SLEEP = 0.05
+SLEEP = 0.07
 # ------------------------ Paths / files -------------------------------
 SRC_FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \
 			ft_memcmp.c ft_calloc.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \

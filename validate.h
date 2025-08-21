@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:29 by valero            #+#    #+#             */
-/*   Updated: 2025/08/20 19:03:47 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:13:08 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #ifndef INT_MAX_LENGTH
 # define INT_MAX_LENGTH 10
 #endif
+
+typedef struct s_push_swap t_push_swap;
 
 typedef enum e_validate_chars_result
 {
@@ -42,5 +44,6 @@ typedef struct s_extract_number_result
 	t_validate_number_result	validation_info;
 } t_extract_number_result;
 
+int	extract_input(t_push_swap *self, int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by valero            #+#    #+#             */
-/*   Updated: 2025/08/20 22:23:31 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:04:21 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include "libft.h"
 
-typedef struct s_ps_stack
+typedef struct s_ps_stack t_ps_stack;
+typedef struct s_ps_node_content t_ps_node_content;
+
+struct s_ps_stack
 {
 	int					is_stack_a;
 	int					bigger;
@@ -64,13 +67,13 @@ typedef struct s_ps_stack
 	void 				(*update_on_transfer)(t_ps_stack *self, t_ps_stack *other_stack);
 	int					(*compare_node)(t_ps_node_content *self_content, t_ps_node_content *content);
 	void				(*destroy)(struct s_ps_stack	**self);
-}	t_ps_stack;
+};
 
-typedef struct s_ps_node_content
+struct s_ps_node_content
 {
 	int				value;
 	t_stack_node	*target_node;
-}	t_ps_node_content;
+};
 
 t_ps_node_content	*new_ps_node_content(int number);
 void				ps_stack_destroy(t_ps_stack	**self);

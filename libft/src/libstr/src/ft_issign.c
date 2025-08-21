@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste.c                                            :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 15:03:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 00:15:22 by valero           ###   ########.fr       */
+/*   Created: 2025/08/20 23:31:23 by valero            #+#    #+#             */
+/*   Updated: 2025/08/20 23:33:36 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "libstr.h"
 
-int main()
+int	ft_issign(int c)
 {
-	int number = 8;
-	t_stack	*stack = new_stack();
-	stack->push(stack, stack->create_node(&number));
-	printf("bottom_ref = %p, top_ref = %p, length = %d, top_value = %d\n", stack->bottom, stack->top, stack->length, *(int *)stack->top->content);
+	return (c == '+' || c == '-');
 }

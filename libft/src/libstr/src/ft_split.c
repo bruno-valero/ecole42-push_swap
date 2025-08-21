@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/18 19:44:07 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/20 22:50:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ static char	**run_split(char const *s, int	*coord_arr, int coord_arr_len)
 static void	delete_words(char ***str, int end)
 {
 	while (end >= 0)
-		free((*str)[end--]);
+	{
+		free((*str)[end]);
+		(*str)[end] = NULL;
+		end--;
+	}
 	free(*str);
 	*str = NULL;
 }

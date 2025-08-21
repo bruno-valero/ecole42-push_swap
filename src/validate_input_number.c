@@ -6,50 +6,123 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/20 22:38:46 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:53:20 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_valid_char(char	c)
+static t_validate_chars_result	validate_chars(const char *current_arg, int i, int it_has_digit);
+static t_extract_number_result	extract_number(const char *str, int len, t_extract_number_result result);
+static int						extract_input_splittable(t_push_swap *push_swap, char *current_arg);
+static int						extract_input_unique(t_push_swap *push_swap, char *current_arg);
+
+int	extract_input(t_push_swap *self, int argc, char **argv)
 {
-	return (ft_isdigit(c) || c == '+' || c == '-' || c == ' ');
+	t_validate_chars_result	char_validation;
+
+	if (!self || !argc || !argv || !*argv)
+		return (0);
+	while (--argc >= 1)
+	{
+		char_validation = validate_chars(argv[argc], -1, 0);
+		if (char_validation == CHARS_VALIDATION_ERROR)
+			return (0);
+		if (char_validation == IS_CHARS_SPLITTABLE)
+			return (extract_input_splittable(self, argv[argc]));
+		return (extract_input_unique(self, argv[argc]));
+	}
 }
 
-t_validate_chars_result	validate_chars(const char *str)
+static t_validate_chars_result	validate_chars(const char *current_arg, int i, int it_has_digit)
 {
-	int						i;
 	t_validate_chars_result	result;
+	char					*current_char;
 
-	if (!str || !str[0])
+	if (!current_arg || !current_arg[0])
 		return (CHARS_VALIDATION_ERROR);
 	result = BEGIN_CHARS_VALIDATION;
-	i = -1;
-	while (str[++i])
+	while (current_arg[++i])
 	{
-		if (!is_valid_char(str[++i]))
+		current_char = current_arg[i];
+		if (!(ft_isdigit(current_char) || ft_issign(current_char)
+			|| current_char == ' '))
 			return (CHARS_VALIDATION_ERROR);
-		if ((str[i] == '+' || str[i] == '-')
-			&& str[i + 1] && (str[i + 1] == '+' || str[i + 1] == '-'))
+		if (ft_issign(current_arg[i])
+			&& current_arg[i + 1] && ft_issign(current_arg[i + 1]))
 			return (CHARS_VALIDATION_ERROR);
-		if (str[i] == ' ' && (str[i + 1] && str[i + 1] != ' '))
+		if (current_arg[i] == ' '&& (current_arg[i + 1] && current_arg[i + 1] != ' '))
 			result = IS_CHARS_SPLITTABLE;
+		if (ft_isdigit(current_char))
+			it_has_digit = 1;
 	}
+	if (!it_has_digit)
+		return (CHARS_VALIDATION_ERROR);
 	if (result == BEGIN_CHARS_VALIDATION)
 		return (CHARS_VALIDATION_OK);
 	return (result);
 }
 
-t_extract_number_result	extract_number(const char *str)
+static int extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 {
-	int						len;
-	t_extract_number_result	result;
+	int						i;
+	char					**splitted_numbers;
+	t_extract_number_result	extractted_number;
 
-	result.number = 0;
-	result.validation_info = BEGIN_NUMBER_VALIDATION;
-	len = ft_strlen(str);
-	if ((*str == '-' || *str == '+') && len > INT_MIN_LENGTH)
+	extractted_number.number = 0;
+	extractted_number.validation_info = BEGIN_NUMBER_VALIDATION;
+	if (!push_swap || !current_arg)
+		return (0);
+	splitted_numbers = ft_split(current_arg, ' ');
+	if (!splitted_numbers)
+		return (0);
+	i = -1;
+	while (splitted_numbers[++i])
+	{
+		extractted_number = extract_number(
+			splitted_numbers[i],ft_strlen(splitted_numbers[i]), extractted_number);
+		if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
+			return (0);
+		if (!fill_stack_a(push_swap, extractted_number.number))
+			return (ft_destroy_char_matrix(&splitted_numbers));
+	}
+	ft_destroy_char_matrix(&splitted_numbers);
+	return (1);
+}
+
+static int extract_input_unique(t_push_swap *push_swap, char *current_arg)
+{
+	t_extract_number_result	extractted_number;
+	char					*trimmed_number;
+
+	extractted_number.number = 0;
+	extractted_number.validation_info = BEGIN_NUMBER_VALIDATION;
+	if (!push_swap || !current_arg)
+		return (0);
+	trimmed_number = ft_strtrim(current_arg, " ");
+	if (!trimmed_number)
+		return (0);
+	extractted_number = extract_number(
+		trimmed_number, ft_strlen(trimmed_number), extractted_number);
+	if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
+		return (0);
+	if (!fill_stack_a(push_swap, extractted_number.number))
+	{
+		free(trimmed_number);
+		return (0);
+	}
+	free(trimmed_number);
+	return (1);
+}
+
+static t_extract_number_result	extract_number(const char *str, int len, t_extract_number_result result)
+{
+	if (!str || !*str)
+	{
+		result.validation_info = NUMBER_VALIDATION_ERROR;
+		return (result);
+	}
+	if (ft_issign(*str) && len > INT_MIN_LENGTH)
 	{
 		result.validation_info = NUMBER_VALIDATION_ERROR;
 		return (result);
@@ -67,63 +140,4 @@ t_extract_number_result	extract_number(const char *str)
 	}
 	result.validation_info = NUMBER_VALIDATION_OK;
 	return (result);
-}
-
-int	extract_input(t_push_swap *push_swap, int argc, char **argv)
-{
-	t_validate_chars_result	char_validation;
-	t_extract_number_result	extractted_number;
-	char					**splitted_numbers;
-	char					*trimmed_number;
-
-	splitted_numbers = NULL;
-	trimmed_number = NULL;
-	while (--argc >= 1)
-	{
-		char_validation = validate_chars(argv[argc]);
-		if (char_validation == CHARS_VALIDATION_ERROR)
-			return (0);
-		if (char_validation == IS_CHARS_SPLITTABLE)
-		{
-			splitted_numbers = ft_split(argv[argc], ' ');
-			while (splitted_numbers)
-			{
-
-			}
-			return (0);
-		}
-		trimmed_number = ft_strtrim(argv[argc], " ");
-		extractted_number = extract_number(trimmed_number);
-		if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
-			return (0);
-		if (!fill_stack_a(push_swap, extractted_number.number))
-		{
-			free(trimmed_number);
-			return (0);
-		}
-		free(trimmed_number);
-	}
-}
-
-int extract_input_splittable(t_push_swap *push_swap, char *current_arg, char **argv)
-{
-	int						i;
-	char					**splitted_numbers;
-	t_extract_number_result	extractted_number;
-
-	splitted_numbers = ft_split(current_arg, ' ');
-	i = -1;
-	while (splitted_numbers[++i])
-	{
-		extractted_number = extract_number(splitted_numbers[++i]);
-		if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
-			return (0);
-		if (!fill_stack_a(push_swap, extractted_number.number))
-		{
-			// free(trimmed_number);
-			return (0);
-		}
-		// free(trimmed_number);
-	}
-	return (0);
 }

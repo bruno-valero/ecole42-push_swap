@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by valero            #+#    #+#             */
-/*   Updated: 2025/08/20 22:13:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:21:55 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
 {
 	t_ps_node_content	*other_top_content;
 
+	if (!self || !self->stack || !other_stack || !other_stack->stack)
+		return (NULL);
 	other_top_content = get_ps_content(other_stack->stack->top);
 	if (self->bigger == other_top_content->value)
 		self->bigger = find_ps_bigger_node(self, NULL);
@@ -120,6 +122,8 @@ void ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
  */
 static t_ps_node_content	*get_ps_content(t_stack_node *node)
 {
+	if (!node)
+		return (NULL);
 	return ((t_ps_node_content *)node->content);
 }
 
@@ -174,6 +178,8 @@ static t_stack_node	*find_ps_bigger_node(t_ps_stack *stack, t_stack_node *bigger
 	int				start;
 	int				end;
 
+	if (!stack || !stack->stack)
+		return (NULL);
 	start = 0;
 	end = stack->stack->length - 1;
 	top = stack->stack->top;
@@ -244,6 +250,8 @@ static t_stack_node	*find_ps_smaller_node(t_ps_stack *stack, t_stack_node *small
 	int				start;
 	int				end;
 
+	if (!stack || !stack->stack)
+		return (NULL);
 	start = 0;
 	end = stack->stack->length - 1;
 	top = stack->stack->top;

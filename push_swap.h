@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 22:26:37 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:11:41 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ typedef struct s_push_swap t_push_swap;
 typedef struct s_push_swap_ops t_push_swap_ops;
 
 /**
+	push swap main struct
+*/
+struct s_push_swap
+{
+	t_ps_stack		*stack_a;
+	t_ps_stack		*stack_b;
+	t_push_swap_ops	*ops;
+	int				(*fill_stack_a)(t_push_swap *self, int number);
+	int				(*extract_input)(t_push_swap *self, int argc, char **argv);
+	void			(*destroy)(t_push_swap	**self);
+};
+
+/**
 	push swap operations
 */
 struct s_push_swap_ops
@@ -33,18 +46,6 @@ struct s_push_swap_ops
 	int			(*swap_both)(t_push_swap	*push_swap);
 	int			(*stack1_push_to_stack2)(t_push_swap *push_swap, int push_a_to_b);
 	void		(*destroy)(t_push_swap_ops	**self);
-};
-
-/**
-	push swap main struct
-*/
-struct s_push_swap
-{
-	t_ps_stack		*stack_a;
-	t_ps_stack		*stack_b;
-	t_push_swap_ops	*ops;
-	int				(*fill_stack_a)(t_push_swap *self, int number);
-	void			(*destroy)(t_push_swap	**self);
 };
 
 // ****************** push_swap_ops ******************

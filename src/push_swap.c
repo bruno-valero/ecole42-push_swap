@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 22:27:08 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:16:31 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_push_swap	*new_push_swap(t_ps_stack *stack_a, t_ps_stack *stack_b)
 	push_swap->stack_b = stack_b;
 	push_swap->ops = new_push_swap_ops();
 	push_swap->fill_stack_a = fill_stack_a;
+	push_swap->extract_input = extract_input;
 	push_swap->destroy = push_swap_destroy;
 }
 
@@ -55,6 +56,8 @@ t_push_swap_ops	*new_push_swap_ops(void)
 	t_push_swap_ops	*ps_ops;
 
 	ps_ops = malloc(sizeof(t_push_swap_ops));
+	if (!ps_ops)
+		return (NULL);
 	ps_ops->rotate = rotate_stack;
 	ps_ops->rotate_both = rotate_stack_both;
 	ps_ops->rotate_reverse = rotate_reverse_stack;
@@ -67,6 +70,8 @@ t_push_swap_ops	*new_push_swap_ops(void)
 
 void	push_swap_ops_destroy(t_push_swap_ops	**self)
 {
+	if (!self || !*self)
+		return (NULL);
 	free(*self);
 	*self = NULL;
 }

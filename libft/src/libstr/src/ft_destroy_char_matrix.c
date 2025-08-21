@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste.c                                            :+:      :+:    :+:   */
+/*   ft_destroy_char_matrix.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 15:03:32 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 00:15:22 by valero           ###   ########.fr       */
+/*   Created: 2025/08/20 23:33:27 by valero            #+#    #+#             */
+/*   Updated: 2025/08/20 23:33:33 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "libstr.h"
 
-int main()
+void	*ft_destroy_char_matrix(char ***char_matrix_ref)
 {
-	int number = 8;
-	t_stack	*stack = new_stack();
-	stack->push(stack, stack->create_node(&number));
-	printf("bottom_ref = %p, top_ref = %p, length = %d, top_value = %d\n", stack->bottom, stack->top, stack->length, *(int *)stack->top->content);
+	int	i;
+
+	i = -1;
+	while ((*char_matrix_ref)[++i])
+	{
+		free((*char_matrix_ref)[i]);
+		(*char_matrix_ref)[i] = NULL;
+	}
+	free(*char_matrix_ref);
+	*char_matrix_ref = NULL;
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 13:24:16 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:23:57 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_ps_stack	*new_ps_stack(int is_stack_a)
 	ps_stack->bigger = 0;
 	ps_stack->smaller = 0;
 	ps_stack->stack = new_stack();
+	ps_stack->update_on_transfer = ps_stack_update_on_transfer;
+	ps_stack->compare_node = compare_ps_node;
 	ps_stack->destroy = ps_stack_destroy;
 	return (ps_stack);
 }
@@ -36,13 +38,18 @@ void	ps_stack_destroy(t_ps_stack	**self)
 	*self = NULL;
 }
 
-t_ps_node_content	*new_node_content(int number)
+t_ps_node_content	*new_ps_node_content(int number)
 {
 	t_ps_node_content	*node;
 
 	node = malloc(sizeof(t_ps_node_content));
 	node->value = number;
 	node->target_node = NULL;
+}
+
+int	compare_ps_node(t_ps_node_content *self_content, t_ps_node_content *content)
+{
+	return (self_content->value == content->value);
 }
 
 static void	ps_node_content_destroy(t_ps_node_content	**node)

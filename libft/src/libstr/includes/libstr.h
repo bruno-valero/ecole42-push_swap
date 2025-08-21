@@ -6,14 +6,15 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:37:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 13:56:50 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/20 17:59:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBSTR_H
 # define LIBSTR_H
 
-#  include <stdlib.h>
+# include <stdlib.h>
+# include "libstr_utils.h"
 
 typedef struct s_str
 {

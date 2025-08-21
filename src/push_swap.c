@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 16:11:54 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:27:08 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_push_swap	*new_push_swap(t_ps_stack *stack_a, t_ps_stack *stack_b)
 	push_swap->stack_a = stack_a;
 	push_swap->stack_b = stack_b;
 	push_swap->ops = new_push_swap_ops();
+	push_swap->fill_stack_a = fill_stack_a;
 	push_swap->destroy = push_swap_destroy;
 }
 
@@ -30,6 +31,23 @@ void	push_swap_destroy(t_push_swap	**self)
 	(*self)->ops->destroy(&(*self)->ops);
 	free(*self);
 	*self = NULL;
+}
+
+int	fill_stack_a(t_push_swap *self, int number)
+{
+	t_ps_node_content	*content;
+	t_stack_node *new_node;
+
+	if (!self || !self->stack_a || !self->stack_a->stack)
+		return (0);
+	content = new_ps_node_content(number);
+	if (self->stack_a->bigger < number)
+		self->stack_a->bigger = number;
+	if (self->stack_a->smaller > number)
+		self->stack_a->smaller = number;
+	new_node = self->stack_a->stack->create_node(content);
+	if (!self->stack_a->stack->push_unique(self->stack_a->stack, new_node, self->stack_a->compare_node))
+		return (0);
 }
 
 t_push_swap_ops	*new_push_swap_ops(void)

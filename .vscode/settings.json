@@ -4,6 +4,9 @@
 		"libft.h": "c",
 		"push_swap.h": "c",
 		"memory_resource": "c",
-		"ps_stack.h": "c"
+		"ps_stack.h": "c",
+		"libstr_utils.h": "c",
+		"stdlib.h": "c",
+		"type_traits": "c"
 	}
 }

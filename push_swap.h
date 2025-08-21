@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 16:12:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:26:37 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "libft.h"
 # include "ps_stack.h"
-# include "ps_utils.h"
-
+# include "validate.h"
 
 typedef struct s_push_swap t_push_swap;
 typedef struct s_push_swap_ops t_push_swap_ops;
@@ -44,6 +43,7 @@ struct s_push_swap
 	t_ps_stack		*stack_a;
 	t_ps_stack		*stack_b;
 	t_push_swap_ops	*ops;
+	int				(*fill_stack_a)(t_push_swap *self, int number);
 	void			(*destroy)(t_push_swap	**self);
 };
 
@@ -64,5 +64,6 @@ int		stack1_push_to_stack2(t_push_swap *push_swap, int push_a_to_b);
 
 // push swap
 void	push_swap_destroy(t_push_swap	**self);
+int		fill_stack_a(t_push_swap *self, int number);
 
 #endif

@@ -6,17 +6,29 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 00:16:31 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:17:42 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push_swap	*new_push_swap(t_ps_stack *stack_a, t_ps_stack *stack_b)
+static t_push_swap_ops	*new_push_swap_ops(void);
+
+t_push_swap	*new_push_swap(void)
 {
 	t_push_swap	*push_swap;
+	t_ps_stack *stack_a;
+	t_ps_stack *stack_b;
 
+	stack_a = new_ps_stack(1);
+	if (!stack_a)
+		return (NULL);
+	stack_b = new_ps_stack(0);
+	if (!stack_b)
+		return (NULL);
 	push_swap = malloc(sizeof(t_push_swap));
+	if (!push_swap)
+		return (NULL);
 	push_swap->stack_a = stack_a;
 	push_swap->stack_b = stack_b;
 	push_swap->ops = new_push_swap_ops();
@@ -51,7 +63,7 @@ int	fill_stack_a(t_push_swap *self, int number)
 		return (0);
 }
 
-t_push_swap_ops	*new_push_swap_ops(void)
+static t_push_swap_ops	*new_push_swap_ops(void)
 {
 	t_push_swap_ops	*ps_ops;
 

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 00:11:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:17:51 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int		stack1_push_to_stack2(t_push_swap *push_swap, int push_a_to_b);
 // ******************************************************
 
 // push swap
-void	push_swap_destroy(t_push_swap	**self);
-int		fill_stack_a(t_push_swap *self, int number);
+t_push_swap		*new_push_swap(void);
+void			push_swap_destroy(t_push_swap	**self);
+int				fill_stack_a(t_push_swap *self, int number);
 
 #endif

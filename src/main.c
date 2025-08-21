@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 15:31:06 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 16:37:43 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,8 @@ int	main(int argc, char **argv)
 	print_stack(push_swap->stack_a);
 	push_swap->ops->rotate_reverse(push_swap->stack_a);
 	push_swap->ops->push_stack1_to_stack2(push_swap, 1);
+	push_swap->ops->rotate(push_swap->stack_a);
 	push_swap->ops->push_stack1_to_stack2(push_swap, 1);
-	push_swap->ops->rotate_reverse(push_swap->stack_a);
-	push_swap->ops->push_stack1_to_stack2(push_swap, 1);
-	push_swap->ops->push_stack1_to_stack2(push_swap, 1);
-	print_stack(push_swap->stack_a);
-	print_stack(push_swap->stack_b);
-	push_swap->ops->rotate(push_swap->stack_b);
 	push_swap->ops->rotate(push_swap->stack_b);
 	push_swap->ops->rotate_reverse(push_swap->stack_b);
 	print_stack(push_swap->stack_a);

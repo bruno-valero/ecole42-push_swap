@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_swap_ops.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:04:52 by valero            #+#    #+#             */
-/*   Updated: 2025/08/16 17:53:59 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:43:42 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ int	stack_rotate(t_stack *self, int reverse)
 		rotated_node->next = self->bottom;
 		self->bottom->prev = rotated_node;
 		self->bottom = rotated_node;
+		self->length++;
 		return (1);
 	}
 	rotated_node = self->detach_node(self, self->bottom);
 	if (!rotated_node)
 		return (0);
-	rotated_node->prev = self->top;
-	self->top->next = rotated_node;
-	self->top = rotated_node;
+	self->push(self, rotated_node);
 	return (1);
 }
 

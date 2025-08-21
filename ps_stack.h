@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 01:13:59 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:40:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ struct s_ps_stack
 	 * @return This function does not return a value.
 	 */
 	void 				(*update_on_transfer)(t_ps_stack *self, t_ps_stack *other_stack);
-	int					(*compare_node)(t_ps_node_content *self_content, t_ps_node_content *content);
+	int					(*compare_node)(void *self_content, void *content);
 	void				(*destroy)(struct s_ps_stack	**self);
 };
 
@@ -79,6 +79,6 @@ t_ps_stack			*new_ps_stack(int is_stack_a);
 t_ps_node_content	*new_ps_node_content(int number);
 void				ps_stack_destroy(t_ps_stack	**self);
 void 				ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack);
-int					compare_ps_node(t_ps_node_content *self_content, t_ps_node_content *content);
+int					compare_ps_node(void *self_content, void *content);
 
 #endif

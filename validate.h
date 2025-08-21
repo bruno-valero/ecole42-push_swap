@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:29 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 00:13:08 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:46:18 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef enum e_validate_number_result
 
 typedef struct s_extract_number_result
 {
-	int							number;
+	long int					number;
 	t_validate_number_result	validation_info;
 } t_extract_number_result;
 

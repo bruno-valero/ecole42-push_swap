@@ -6,13 +6,13 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 00:18:02 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:39:43 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ps_node_content_destroy(t_ps_node_content	**node);
+void	ps_node_content_destroy(void *node);
 
 t_ps_stack	*new_ps_stack(int is_stack_a)
 {
@@ -34,7 +34,7 @@ t_ps_stack	*new_ps_stack(int is_stack_a)
 void	ps_stack_destroy(t_ps_stack	**self)
 {
 	if (!self || !*self || !(*self)->stack)
-		return (NULL);
+		return ;
 	(*self)->stack->destroy(&(*self)->stack, ps_node_content_destroy);
 	free(*self);
 	*self = NULL;
@@ -49,15 +49,24 @@ t_ps_node_content	*new_ps_node_content(int number)
 		return (NULL);
 	node->value = number;
 	node->target_node = NULL;
+	return (node);
 }
 
-int	compare_ps_node(t_ps_node_content *self_content, t_ps_node_content *content)
+int	compare_ps_node(void *self_content, void *content)
 {
-	return (self_content->value == content->value);
+	t_ps_node_content *s_cont;
+	t_ps_node_content *cont;
+
+	s_cont = (t_ps_node_content *)self_content;
+	cont = (t_ps_node_content *)content;
+	return (s_cont->value == (cont)->value);
 }
 
-static void	ps_node_content_destroy(t_ps_node_content	**node)
+void	ps_node_content_destroy(void *node)
 {
-	free(*node);
-	*node = NULL;
+	t_ps_node_content	**ps_node_content;
+
+	ps_node_content = (t_ps_node_content	**)node;
+	free(*ps_node_content);
+	*ps_node_content = NULL;
 }

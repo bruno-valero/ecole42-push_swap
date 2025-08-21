@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 00:53:20 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:54:46 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,33 @@ static int						extract_input_unique(t_push_swap *push_swap, char *current_arg);
 int	extract_input(t_push_swap *self, int argc, char **argv)
 {
 	t_validate_chars_result	char_validation;
+	int						result;
 
 	if (!self || !argc || !argv || !*argv)
 		return (0);
+	result = 1;
 	while (--argc >= 1)
 	{
 		char_validation = validate_chars(argv[argc], -1, 0);
 		if (char_validation == CHARS_VALIDATION_ERROR)
 			return (0);
 		if (char_validation == IS_CHARS_SPLITTABLE)
-			return (extract_input_splittable(self, argv[argc]));
-		return (extract_input_unique(self, argv[argc]));
+		{
+			if (result)
+				result = extract_input_splittable(self, argv[argc]);
+		}
+		else if (result)
+			result = extract_input_unique(self, argv[argc]);
 	}
+	if (!result)
+		self->destroy(&self);
+	return (result);
 }
 
 static t_validate_chars_result	validate_chars(const char *current_arg, int i, int it_has_digit)
 {
 	t_validate_chars_result	result;
-	char					*current_char;
+	char					current_char;
 
 	if (!current_arg || !current_arg[0])
 		return (CHARS_VALIDATION_ERROR);
@@ -84,7 +93,7 @@ static int extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 		if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
 			return (0);
 		if (!fill_stack_a(push_swap, extractted_number.number))
-			return (ft_destroy_char_matrix(&splitted_numbers));
+			return (!!ft_destroy_char_matrix(&splitted_numbers));
 	}
 	ft_destroy_char_matrix(&splitted_numbers);
 	return (1);

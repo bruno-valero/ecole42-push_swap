@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ops_rotate_stacks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:31:24 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/19 17:04:39 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/21 01:26:07 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	rotate_stack(t_ps_stack *ps_sptack)
 {
 	if (!ps_sptack || !ps_sptack->stack
-		|| !ps_sptack->stack->rotate(ps_sptack, 0))
+		|| !ps_sptack->stack->rotate(ps_sptack->stack, 0))
 		return (0);
 	if (ps_sptack->is_stack_a)
 		return (!!write(1, "ra\n", 3));
@@ -29,11 +29,11 @@ int	rotate_stack_both(t_push_swap	*push_swap)
 		return (0);
 	if (!push_swap->stack_a->is_stack_a || push_swap->stack_b->is_stack_a)
 		return (0);
-	if (!push_swap->stack_a->stack->rotate(push_swap->stack_a, 0))
+	if (!push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 0))
 		return (0);
-	if (!push_swap->stack_b->stack->rotate(push_swap->stack_b, 0))
+	if (!push_swap->stack_b->stack->rotate(push_swap->stack_b->stack, 0))
 	{
-		push_swap->stack_a->stack->rotate(push_swap->stack_a, 1);
+		push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 1);
 		return (0);
 	}
 	return (!!write(1, "rr\n", 3));
@@ -56,11 +56,11 @@ int	rotate_reverse_stack_both(t_push_swap	*push_swap)
 		return (0);
 	if (!push_swap->stack_a->is_stack_a || push_swap->stack_b->is_stack_a)
 		return (0);
-	if (!push_swap->stack_a->stack->rotate(push_swap->stack_a, 1))
+	if (!push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 1))
 		return (0);
-	if (!push_swap->stack_b->stack->rotate(push_swap->stack_b, 1))
+	if (!push_swap->stack_b->stack->rotate(push_swap->stack_b->stack, 1))
 	{
-		push_swap->stack_a->stack->rotate(push_swap->stack_a, 0);
+		push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 0);
 		return (0);
 	}
 	return (!!write(1, "rrr\n", 3));

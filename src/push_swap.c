@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 01:17:42 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 01:43:06 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_push_swap	*new_push_swap(void)
 	push_swap->fill_stack_a = fill_stack_a;
 	push_swap->extract_input = extract_input;
 	push_swap->destroy = push_swap_destroy;
+	return (push_swap);
 }
 
 void	push_swap_destroy(t_push_swap	**self)
@@ -61,6 +62,7 @@ int	fill_stack_a(t_push_swap *self, int number)
 	new_node = self->stack_a->stack->create_node(content);
 	if (!self->stack_a->stack->push_unique(self->stack_a->stack, new_node, self->stack_a->compare_node))
 		return (0);
+	return (1);
 }
 
 static t_push_swap_ops	*new_push_swap_ops(void)
@@ -78,12 +80,13 @@ static t_push_swap_ops	*new_push_swap_ops(void)
 	ps_ops->swap = swap_stack;
 	ps_ops->swap_both = swap_stack_both;
 	ps_ops->destroy = push_swap_ops_destroy;
+	return (ps_ops);
 }
 
 void	push_swap_ops_destroy(t_push_swap_ops	**self)
 {
 	if (!self || !*self)
-		return (NULL);
+		return ;
 	free(*self);
 	*self = NULL;
 }

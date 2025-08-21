@@ -4,7 +4,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I . -I $(LIBFT_DIR)/includes -I $(LIBFT_DIR)/dependency_includes
 CC = cc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
-SRC_FILES = src/teste.c src/ops_swap_stacks.c
+SRC_FILES = src/ops_rotate_stacks.c src/ops_swap_stacks.c src/ps_stack_actions.c \
+			src/ps_stack.c src/push_swap.c src/validate_input_number.c src/main.c
 SLEEP = 0.07
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 11:49:08 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 13:58:38 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_ps_stack	*new_ps_stack(int is_stack_a)
 	t_ps_stack	*ps_stack;
 
 	ps_stack = malloc(sizeof(t_ps_stack));
-	if (!is_stack_a || !ps_stack)
+	if (!ps_stack)
 		return (NULL);
 	ps_stack->is_stack_a = is_stack_a;
 	ps_stack->bigger = 0;

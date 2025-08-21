@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:10:19 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 11:47:04 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:33:28 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	swap_stack_both(t_push_swap *push_swap)
 	return (!!write(1, "ss\n", 3));
 }
 
-int	stack1_push_to_stack2(t_push_swap *push_swap, int push_a_to_b)
+int	push_stack1_to_stack2(t_push_swap *push_swap, int push_a_to_b)
 {
 	int	transfer_succeeded;
 

@@ -30,4 +30,8 @@ fclean: clean
 
 re: fclean all
 
+test: re
+	clear
+	./push_swap 10 20 30 "42 52 62" 70 80
+
 .PHONY: all clean fclean re

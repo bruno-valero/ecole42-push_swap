@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 12:16:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:47:11 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int	extract_input(t_push_swap *self, int argc, char **argv)
 				result = extract_input_splittable(self, argv[argc]);
 		}
 		else if (result)
+		{
 			result = extract_input_unique(self, argv[argc]);
+		}
 	}
 	if (!result)
 		self->destroy(&self);
@@ -83,7 +85,7 @@ static t_validate_chars_result	validate_chars(const char *current_arg, int i,
 
 static int	extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 {
-	int						i;
+	int						split_len;
 	char					**splitted_numbers;
 	t_extract_number_result	extractted_number;
 
@@ -94,11 +96,13 @@ static int	extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 	splitted_numbers = ft_split(current_arg, ' ');
 	if (!splitted_numbers)
 		return (0);
-	i = -1;
-	while (splitted_numbers[++i])
+	split_len = 0;
+	while (splitted_numbers[++split_len])
+		split_len++;
+	while (--split_len >= 0)
 	{
-		extractted_number = extract_number(splitted_numbers[i],
-				ft_strlen(splitted_numbers[i]), extractted_number);
+		extractted_number = extract_number(splitted_numbers[split_len],
+				ft_strlen(splitted_numbers[split_len]), extractted_number);
 		if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
 			return (0);
 		if (!fill_stack_a(push_swap, extractted_number.number))

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 11:49:25 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:33:28 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_push_swap	*new_push_swap(void)
 	t_push_swap	*push_swap;
 	t_ps_stack	*stack_a;
 	t_ps_stack	*stack_b;
-
 	stack_a = new_ps_stack(1);
 	if (!stack_a)
 		return (NULL);
@@ -54,6 +53,11 @@ int	fill_stack_a(t_push_swap *self, int number)
 
 	if (!self || !self->stack_a || !self->stack_a->stack)
 		return (0);
+	if (!self->stack_a->stack->length)
+	{
+		self->stack_a->bigger = INT_MIN;
+		self->stack_a->smaller = INT_MAX;
+	}
 	content = new_ps_node_content(number);
 	if (self->stack_a->bigger < number)
 		self->stack_a->bigger = number;
@@ -77,7 +81,7 @@ static t_push_swap_ops	*new_push_swap_ops(void)
 	ps_ops->rotate_both = rotate_stack_both;
 	ps_ops->rotate_reverse = rotate_reverse_stack;
 	ps_ops->rotate_reverse_both = rotate_reverse_stack_both;
-	ps_ops->stack1_push_to_stack2 = stack1_push_to_stack2;
+	ps_ops->push_stack1_to_stack2 = push_stack1_to_stack2;
 	ps_ops->swap = swap_stack;
 	ps_ops->swap_both = swap_stack_both;
 	ps_ops->destroy = push_swap_ops_destroy;

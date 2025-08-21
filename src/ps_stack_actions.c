@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 11:48:48 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:41:53 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ void	ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
 
 	if (!self || !self->stack || !other_stack || !other_stack->stack)
 		return ;
+	if (other_stack->stack->length == 1)
+	{
+		other_stack->smaller = INT_MAX;
+		other_stack->bigger = INT_MIN;
+	}
 	other_top_content = get_ps_content(other_stack->stack->top);
 	if (self->bigger == other_top_content->value)
 		self->bigger = get_ps_content(find_ps_bigger_node(self, NULL))->value;

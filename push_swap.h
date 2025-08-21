@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 11:55:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:33:28 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "ps_stack.h"
 # include "validate.h"
+# include <stdio.h>
 
 typedef struct s_push_swap		t_push_swap;
 typedef struct s_push_swap_ops	t_push_swap_ops;
@@ -44,7 +45,7 @@ struct s_push_swap_ops
 	int			(*rotate_reverse_both)(t_push_swap	*push_swap);
 	int			(*swap)(t_ps_stack *push_swap);
 	int			(*swap_both)(t_push_swap	*push_swap);
-	int			(*stack1_push_to_stack2)(
+	int			(*push_stack1_to_stack2)(
 			t_push_swap *push_swap, int push_a_to_b);
 	void		(*destroy)(t_push_swap_ops	**self);
 };
@@ -60,7 +61,7 @@ int				rotate_reverse_stack_both(t_push_swap	*push_swap);
 // -	---------- swap ops -----------
 int				swap_stack(t_ps_stack *push_swap);
 int				swap_stack_both(t_push_swap *push_swap);
-int				stack1_push_to_stack2(t_push_swap *push_swap, int push_a_to_b);
+int				push_stack1_to_stack2(t_push_swap *push_swap, int push_a_to_b);
 
 // ******************************************************
 

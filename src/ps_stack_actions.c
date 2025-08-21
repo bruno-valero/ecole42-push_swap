@@ -6,15 +6,17 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 01:29:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:48:48 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static t_ps_node_content	*get_ps_content(t_stack_node *node);
-static t_stack_node			*find_ps_bigger_node(t_ps_stack *stack, t_stack_node *bigger);
-static t_stack_node			*find_ps_smaller_node(t_ps_stack *stack, t_stack_node *smaller);
+static t_stack_node			*find_ps_bigger_node(
+								t_ps_stack *stack, t_stack_node *bigger);
+static t_stack_node			*find_ps_smaller_node(
+								t_ps_stack *stack, t_stack_node *smaller);
 
 /**
  * # Updates Push Swap Stack values after a Transfer
@@ -29,7 +31,8 @@ static t_stack_node			*find_ps_smaller_node(t_ps_stack *stack, t_stack_node *sma
  *
  * ## How it works:
  *
- * 1. Retrieves the top content of `other_stack` (the stack that received the node).
+ * 1. Retrieves the top content of `other_stack`
+ * (the stack that received the node).
  *
  * 2. Checks if the transferred value was previously the maximum or minimum
  *    of `self`. If so, recalculates `self->bigger` or `self->smaller` by
@@ -56,7 +59,7 @@ static t_stack_node			*find_ps_smaller_node(t_ps_stack *stack, t_stack_node *sma
  *
  * @return This function does not return a value.
  */
-void ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
+void	ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
 {
 	t_ps_node_content	*other_top_content;
 
@@ -171,7 +174,8 @@ static t_ps_node_content	*get_ps_content(t_stack_node *node)
  *
  * @return A pointer to the node containing the smallest value in the stack.
  */
-static t_stack_node	*find_ps_bigger_node(t_ps_stack *stack, t_stack_node *bigger)
+static t_stack_node	*find_ps_bigger_node(
+		t_ps_stack *stack, t_stack_node *bigger)
 {
 	t_stack_node	*top;
 	t_stack_node	*bottom;
@@ -189,7 +193,8 @@ static t_stack_node	*find_ps_bigger_node(t_ps_stack *stack, t_stack_node *bigger
 	{
 		if (get_ps_content(top)->value > get_ps_content(bigger)->value)
 			bigger = top;
-		if (bottom != top && get_ps_content(bottom)->value > get_ps_content(bigger)->value)
+		if (bottom != top && get_ps_content(bottom)->value
+			> get_ps_content(bigger)->value)
 			bigger = bottom;
 		top = top->prev;
 		bottom = bottom->next;
@@ -243,7 +248,8 @@ static t_stack_node	*find_ps_bigger_node(t_ps_stack *stack, t_stack_node *bigger
  *
  * @return A pointer to the node containing the smallest value in the stack.
  */
-static t_stack_node	*find_ps_smaller_node(t_ps_stack *stack, t_stack_node *smaller)
+static t_stack_node	*find_ps_smaller_node(
+		t_ps_stack *stack, t_stack_node *smaller)
 {
 	t_stack_node	*top;
 	t_stack_node	*bottom;
@@ -261,7 +267,8 @@ static t_stack_node	*find_ps_smaller_node(t_ps_stack *stack, t_stack_node *small
 	{
 		if (get_ps_content(top)->value < get_ps_content(smaller)->value)
 			smaller = top;
-		if (bottom != top && get_ps_content(bottom)->value < get_ps_content(smaller)->value)
+		if (bottom != top && get_ps_content(bottom)->value
+			< get_ps_content(smaller)->value)
 			smaller = bottom;
 		top = top->prev;
 		bottom = bottom->next;

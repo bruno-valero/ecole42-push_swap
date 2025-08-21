@@ -6,14 +6,14 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 02:03:28 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:46:08 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
 	t_ps_node_content	*current_content;
 	t_stack_node		*temp_node;
@@ -22,7 +22,7 @@ void print_stack(t_stack *stack)
 	printf("[ ");
 	while (temp_node)
 	{
-		current_content = (t_ps_node_content	*)temp_node->content;
+		current_content = (t_ps_node_content *)temp_node->content;
 		printf("%d, ", current_content->value);
 		temp_node = temp_node->prev;
 	}

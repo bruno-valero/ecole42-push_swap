@@ -6,14 +6,14 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:35:01 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 14:27:33 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:04:23 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#  include <stdlib.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include "stack.h"
 # include "libstr.h"

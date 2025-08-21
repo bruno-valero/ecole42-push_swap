@@ -13,7 +13,7 @@
 #ifndef STACK_H
 # define STACK_H
 
-#  include <stdlib.h>
+# include <stdlib.h>
 
 typedef struct s_stack_node
 {

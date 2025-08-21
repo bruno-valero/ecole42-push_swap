@@ -6,16 +6,24 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 01:54:46 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:16:11 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_validate_chars_result	validate_chars(const char *current_arg, int i, int it_has_digit);
-static t_extract_number_result	extract_number(const char *str, int len, t_extract_number_result result);
-static int						extract_input_splittable(t_push_swap *push_swap, char *current_arg);
-static int						extract_input_unique(t_push_swap *push_swap, char *current_arg);
+static t_validate_chars_result	validate_chars(const char *current_arg,
+									int i, int it_has_digit,
+									t_validate_chars_result result);
+static t_extract_number_result	extract_number(
+									const char *str, int len,
+									t_extract_number_result result);
+static int						extract_input_splittable(
+									t_push_swap *push_swap,
+									char *current_arg);
+static int						extract_input_unique(
+									t_push_swap *push_swap,
+									char *current_arg);
 
 int	extract_input(t_push_swap *self, int argc, char **argv)
 {
@@ -24,10 +32,11 @@ int	extract_input(t_push_swap *self, int argc, char **argv)
 
 	if (!self || !argc || !argv || !*argv)
 		return (0);
+	char_validation = BEGIN_CHARS_VALIDATION;
 	result = 1;
 	while (--argc >= 1)
 	{
-		char_validation = validate_chars(argv[argc], -1, 0);
+		char_validation = validate_chars(argv[argc], -1, 0, char_validation);
 		if (char_validation == CHARS_VALIDATION_ERROR)
 			return (0);
 		if (char_validation == IS_CHARS_SPLITTABLE)
@@ -43,24 +52,24 @@ int	extract_input(t_push_swap *self, int argc, char **argv)
 	return (result);
 }
 
-static t_validate_chars_result	validate_chars(const char *current_arg, int i, int it_has_digit)
+static t_validate_chars_result	validate_chars(const char *current_arg, int i,
+	int it_has_digit, t_validate_chars_result result)
 {
-	t_validate_chars_result	result;
 	char					current_char;
 
 	if (!current_arg || !current_arg[0])
 		return (CHARS_VALIDATION_ERROR);
-	result = BEGIN_CHARS_VALIDATION;
 	while (current_arg[++i])
 	{
 		current_char = current_arg[i];
 		if (!(ft_isdigit(current_char) || ft_issign(current_char)
-			|| current_char == ' '))
+				|| current_char == ' '))
 			return (CHARS_VALIDATION_ERROR);
 		if (ft_issign(current_arg[i])
 			&& current_arg[i + 1] && ft_issign(current_arg[i + 1]))
 			return (CHARS_VALIDATION_ERROR);
-		if (current_arg[i] == ' '&& (current_arg[i + 1] && current_arg[i + 1] != ' '))
+		if (current_arg[i] == ' ' && (current_arg[i + 1]
+				&& current_arg[i + 1] != ' '))
 			result = IS_CHARS_SPLITTABLE;
 		if (ft_isdigit(current_char))
 			it_has_digit = 1;
@@ -72,7 +81,7 @@ static t_validate_chars_result	validate_chars(const char *current_arg, int i, in
 	return (result);
 }
 
-static int extract_input_splittable(t_push_swap *push_swap, char *current_arg)
+static int	extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 {
 	int						i;
 	char					**splitted_numbers;
@@ -88,8 +97,8 @@ static int extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 	i = -1;
 	while (splitted_numbers[++i])
 	{
-		extractted_number = extract_number(
-			splitted_numbers[i],ft_strlen(splitted_numbers[i]), extractted_number);
+		extractted_number = extract_number(splitted_numbers[i],
+				ft_strlen(splitted_numbers[i]), extractted_number);
 		if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
 			return (0);
 		if (!fill_stack_a(push_swap, extractted_number.number))
@@ -99,7 +108,7 @@ static int extract_input_splittable(t_push_swap *push_swap, char *current_arg)
 	return (1);
 }
 
-static int extract_input_unique(t_push_swap *push_swap, char *current_arg)
+static int	extract_input_unique(t_push_swap *push_swap, char *current_arg)
 {
 	t_extract_number_result	extractted_number;
 	char					*trimmed_number;
@@ -111,8 +120,8 @@ static int extract_input_unique(t_push_swap *push_swap, char *current_arg)
 	trimmed_number = ft_strtrim(current_arg, " ");
 	if (!trimmed_number)
 		return (0);
-	extractted_number = extract_number(
-		trimmed_number, ft_strlen(trimmed_number), extractted_number);
+	extractted_number = extract_number(trimmed_number,
+			ft_strlen(trimmed_number), extractted_number);
 	if (extractted_number.validation_info == NUMBER_VALIDATION_ERROR)
 		return (0);
 	if (!fill_stack_a(push_swap, extractted_number.number))
@@ -124,7 +133,8 @@ static int extract_input_unique(t_push_swap *push_swap, char *current_arg)
 	return (1);
 }
 
-static t_extract_number_result	extract_number(const char *str, int len, t_extract_number_result result)
+static t_extract_number_result	extract_number(
+		const char *str, int len, t_extract_number_result result)
 {
 	if (!str || !*str)
 	{

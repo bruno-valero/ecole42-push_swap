@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 01:40:59 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:56:21 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-typedef struct s_ps_stack t_ps_stack;
-typedef struct s_ps_node_content t_ps_node_content;
+typedef struct s_ps_stack			t_ps_stack;
+typedef struct s_ps_node_content	t_ps_node_content;
 
 struct s_ps_stack
 {
@@ -30,18 +30,21 @@ struct s_ps_stack
 	 * ---
 	 *
 	 * Ensures that the `bigger` (maximum) and `smaller` (minimum) values of two
-	 * stacks remain correct after a push operation where only `other_stack` receives
+	 * stacks remain correct after a
+	 * push operation where only `other_stack` receives
 	 * a new top node from `self`.
 	 *
 	 * ---
 	 *
 	 * ## How it works:
 	 *
-	 * 1. Retrieves the top content of `other_stack` (the stack that received the node).
+	 * 1. Retrieves the top content of
+	 * `other_stack` (the stack that received the node).
 	 *
 	 * 2. Checks if the transferred value was previously the maximum or minimum
 	 *    of `self`. If so, recalculates `self->bigger` or `self->smaller` by
-	 *    traversing the stack with `find_ps_bigger_node` or `find_ps_smaller_node`.
+	 *    traversing the stack with
+	 * `find_ps_bigger_node` or `find_ps_smaller_node`.
 	 *
 	 * 3. Updates `other_stack->bigger` and `other_stack->smaller` if the new
 	 *    top element introduces a new maximum or minimum.
@@ -64,7 +67,8 @@ struct s_ps_stack
 	 *
 	 * @return This function does not return a value.
 	 */
-	void 				(*update_on_transfer)(t_ps_stack *self, t_ps_stack *other_stack);
+	void				(*update_on_transfer)(
+			t_ps_stack *self, t_ps_stack *other_stack);
 	int					(*compare_node)(void *self_content, void *content);
 	void				(*destroy)(struct s_ps_stack	**self);
 };
@@ -78,7 +82,8 @@ struct s_ps_node_content
 t_ps_stack			*new_ps_stack(int is_stack_a);
 t_ps_node_content	*new_ps_node_content(int number);
 void				ps_stack_destroy(t_ps_stack	**self);
-void 				ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack);
+void				ps_stack_update_on_transfer(
+						t_ps_stack *self, t_ps_stack *other_stack);
 int					compare_ps_node(void *self_content, void *content);
 
 #endif

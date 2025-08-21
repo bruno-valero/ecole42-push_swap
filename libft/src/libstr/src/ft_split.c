@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:49:18 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 22:50:59 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:08:07 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**ft_split(char const *s, char c)
 			coord_arr[coord_arr_len++] = i;
 	}
 	if (coord_arr_len % 2 != 0)
-			coord_arr[coord_arr_len++] = i - 1;
+		coord_arr[coord_arr_len++] = i - 1;
 	return (run_split(s, coord_arr, coord_arr_len));
 }
 

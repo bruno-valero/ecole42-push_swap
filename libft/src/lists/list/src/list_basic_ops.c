@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_basic_ops.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 19:12:59 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/17 19:37:17 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:14:29 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,12 @@ t_list_node	*list_index(t_list *self, int idx)
 {
 	t_list_node	node;
 	int			start;
+
 	if (!self || !self->length || idx >= self->length)
 		return (NULL);
 	start = 0;
 	while (idx--)
 	{
-
+		idx--;
 	}
 }

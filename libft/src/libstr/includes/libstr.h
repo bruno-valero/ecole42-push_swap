@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:37:39 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/20 23:34:04 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:05:21 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ typedef struct s_str
 	char	*data;
 }	t_str;
 
-typedef struct s_str_matrix
-{
+// typedef struct s_str_matrix
+// {
 
-}	t_str_matrix;
+// }	t_str_matrix;
 
 int			ft_atoi(const char *nptr);
 long int	ft_atol(const char *nptr);

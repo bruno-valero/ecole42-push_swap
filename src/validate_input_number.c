@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_input_number.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 16:04:02 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/22 19:21:55 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ static t_validate_chars_result	validate_chars(const char *current_arg, int i,
 	while (current_arg[++i])
 	{
 		current_char = current_arg[i];
-		if (!(ft_isdigit(current_char) || ft_issign(current_char)
-				|| current_char == ' '))
+		if (!is_valid_char(current_char))
 			return (CHARS_VALIDATION_ERROR);
-		if (ft_issign(current_arg[i])
-			&& current_arg[i + 1] && ft_issign(current_arg[i + 1]))
+		if ((ft_issign(current_char) && current_arg[i + 1]
+				&& !ft_isdigit(current_arg[i + 1])) || (ft_isdigit(current_char)
+				&& current_arg[i + 1] && !is_nbr_or_space(current_arg[i + 1])))
 			return (CHARS_VALIDATION_ERROR);
-		if (current_arg[i] == ' ' && (current_arg[i + 1]
+		if (current_char == ' ' && (current_arg[i + 1]
 				&& current_arg[i + 1] != ' '))
 			result = IS_CHARS_SPLITTABLE;
 		if (ft_isdigit(current_char))

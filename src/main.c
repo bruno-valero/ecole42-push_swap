@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 18:39:27 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/22 19:22:51 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int	main(int argc, char **argv)
 {
 	t_push_swap	*push_swap;
 
+	if (argc < 2)
+	{
+		write(1, "Error\n", 6);
+		return (1);
+	}
 	push_swap = new_push_swap();
 	if (!push_swap->extract_input(push_swap, argc, argv))
 	{

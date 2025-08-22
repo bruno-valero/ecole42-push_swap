@@ -7,7 +7,7 @@ CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
 SRC_FILES = src/ops_rotate_stacks.c src/ops_swap_stacks.c src/ps_stack_actions.c \
 			src/ps_stack.c src/push_swap.c src/validate_input_number.c src/main.c \
 			src/ps_stack_content.c src/push_swap_ops_both.c src/push_swap_ops_push.c \
-			src/push_swap_ops_rotate.c src/push_swap_ops_swap.c
+			src/push_swap_ops_rotate.c src/push_swap_ops_swap.c src/valid_input_number.c
 SLEEP = 0.07
 
 all: $(NAME)

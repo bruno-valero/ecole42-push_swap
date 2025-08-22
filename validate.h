@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:29 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 11:54:17 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/22 18:27:00 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ typedef struct s_extract_number_result
 }	t_extract_number_result;
 
 int	extract_input(t_push_swap *self, int argc, char **argv);
+int	is_nbr_or_space(int c);
+int	is_valid_char(int c);
 
 #endif

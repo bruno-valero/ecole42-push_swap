@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 17:04:58 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/23 11:30:27 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,52 +24,10 @@ struct s_ps_stack
 	int					bigger;
 	int					smaller;
 	t_stack				*stack;
-	/**
-	 * # Updates Push Swap Stack values after a Transfer
-	 *
-	 * ---
-	 *
-	 * Ensures that the `bigger` (maximum) and `smaller` (minimum) values of two
-	 * stacks remain correct after a
-	 * push operation where only `other_stack` receives
-	 * a new top node from `self`.
-	 *
-	 * ---
-	 *
-	 * ## How it works:
-	 *
-	 * 1. Retrieves the top content of
-	 * `other_stack` (the stack that received the node).
-	 *
-	 * 2. Checks if the transferred value was previously the maximum or minimum
-	 *    of `self`. If so, recalculates `self->bigger` or `self->smaller` by
-	 *    traversing the stack with
-	 * `find_ps_bigger_node` or `find_ps_smaller_node`.
-	 *
-	 * 3. Updates `other_stack->bigger` and `other_stack->smaller` if the new
-	 *    top element introduces a new maximum or minimum.
-	 *
-	 * ---
-	 *
-	 * ## In summary:
-	 *
-	 * Keeps both stacks' metadata consistent after a push operation, ensuring
-	 * accurate tracking of maximum and minimum values even when transferred
-	 * elements were previously the extremes.
-	 *
-	 * ---
-	 *
-	 * @param self        The stack from which the node was transferred. Its
-	 *                    extremes may be recalculated if the transferred node
-	 *                    was previously its `bigger` or `smaller`.
-	 * @param other_stack The stack that received the node. Its extremes are
-	 *                    updated if the new top element changes them.
-	 *
-	 * @return This function does not return a value.
-	 */
 	void				(*update_on_transfer)(
 			t_ps_stack *self, t_ps_stack *other_stack);
 	int					(*compare_node)(void *self_content, void *content);
+	t_ps_node_content	*(*get_content)(t_stack_node *node);
 	void				(*destroy)(struct s_ps_stack	**self);
 };
 
@@ -86,6 +44,7 @@ void				ps_stack_update_on_transfer(
 						t_ps_stack *self, t_ps_stack *other_stack);
 int					compare_ps_node(void *self_content, void *content);
 void				ps_node_content_destroy(void *node);
+t_ps_node_content	*get_ps_content(t_stack_node *node);
 void				*destroy_ps_stacks(
 						t_ps_stack *stack_a, t_ps_stack *stack_b);
 

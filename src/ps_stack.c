@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 17:01:39 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/23 11:31:24 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_ps_stack	*new_ps_stack(int is_stack_a)
 	ps_stack->stack = new_stack();
 	ps_stack->update_on_transfer = ps_stack_update_on_transfer;
 	ps_stack->compare_node = compare_ps_node;
+	ps_stack->get_content = get_ps_content;
 	ps_stack->destroy = ps_stack_destroy;
 	return (ps_stack);
 }

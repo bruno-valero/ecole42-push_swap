@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_ops.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:27:03 by valero            #+#    #+#             */
-/*   Updated: 2025/08/21 18:42:12 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/23 16:11:53 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,20 @@ struct s_push_swap_ops
 	int			(*rra)(t_push_swap *push_swap);
 	int			(*rrb)(t_push_swap *push_swap);
 	int			(*rrr)(t_push_swap *push_swap);
-	void		(*destroy)(t_push_swap_ops	**self);
+	void		*(*destroy)(t_push_swap_ops	**self);
 };
 
-int	sa(t_push_swap *push_swap);
-int	sb(t_push_swap *push_swap);
-int	ss(t_push_swap *push_swap);
-int	pa(t_push_swap *push_swap);
-int	pb(t_push_swap *push_swap);
-int	ra(t_push_swap *push_swap);
-int	rb(t_push_swap *push_swap);
-int	rr(t_push_swap *push_swap);
-int	rra(t_push_swap *push_swap);
-int	rrb(t_push_swap *push_swap);
-int	rrr(t_push_swap *push_swap);
+void			*push_swap_ops_destroy(t_push_swap_ops	**self);
+int				sa(t_push_swap *push_swap);
+int				sb(t_push_swap *push_swap);
+int				ss(t_push_swap *push_swap);
+int				pa(t_push_swap *push_swap);
+int				pb(t_push_swap *push_swap);
+int				ra(t_push_swap *push_swap);
+int				rb(t_push_swap *push_swap);
+int				rr(t_push_swap *push_swap);
+int				rra(t_push_swap *push_swap);
+int				rrb(t_push_swap *push_swap);
+int				rrr(t_push_swap *push_swap);
 
 #endif

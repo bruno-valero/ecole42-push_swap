@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 18:41:02 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/23 16:09:58 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ static t_push_swap_ops	*new_push_swap_ops(void);
 
 t_push_swap	*new_push_swap(void)
 {
-	t_push_swap	*push_swap;
-	t_ps_stack	*stack_a;
-	t_ps_stack	*stack_b;
+	t_push_swap	*ps;
 
-	stack_a = new_ps_stack(1);
-	stack_b = new_ps_stack(0);
-	push_swap = malloc(sizeof(t_push_swap));
-	if (!push_swap)
-	{
-		destroy_ps_stacks(stack_a, stack_b);
+	ps = malloc(sizeof(t_push_swap));
+	if (!ps)
 		return (NULL);
+	ps->stack_a = new_ps_stack(1);
+	ps->stack_b = new_ps_stack(0);
+	ps->ops = new_push_swap_ops();
+	ps->turk_sort = new_turk_sort(ps->stack_a, ps->stack_b);
+	if (!ps->stack_a || !ps->stack_b || !ps->ops || !ps->turk_sort)
+	{
+		destroy_ps_stacks(ps->stack_a, ps->stack_b);
+		ps->turk_sort->destroy(&ps->turk_sort);
+		return (ps->ops->destroy(&ps->ops));
 	}
-	push_swap->stack_a = stack_a;
-	push_swap->stack_b = stack_b;
-	push_swap->ops = new_push_swap_ops();
-	push_swap->fill_stack_a = fill_stack_a;
-	push_swap->extract_input = extract_input;
-	push_swap->destroy = push_swap_destroy;
-	return (push_swap);
+	ps->fill_stack_a = fill_stack_a;
+	ps->extract_input = extract_input;
+	ps->destroy = push_swap_destroy;
+	return (ps);
 }
 
 void	push_swap_destroy(t_push_swap	**self)
@@ -95,10 +95,11 @@ static t_push_swap_ops	*new_push_swap_ops(void)
 	return (ps_ops);
 }
 
-void	push_swap_ops_destroy(t_push_swap_ops	**self)
+void	*push_swap_ops_destroy(t_push_swap_ops	**self)
 {
 	if (!self || !*self)
-		return ;
+		return (NULL);
 	free(*self);
 	*self = NULL;
+	return (NULL);
 }

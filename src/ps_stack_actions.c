@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack_actions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by valero            #+#    #+#             */
-/*   Updated: 2025/08/22 23:00:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/23 11:31:07 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_ps_node_content	*get_ps_content(t_stack_node *node);
 static t_stack_node			*find_ps_bigger_node(
 								t_ps_stack *stack, t_stack_node *bigger);
 static t_stack_node			*find_ps_smaller_node(
@@ -134,7 +133,7 @@ void	ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
  *
  * @return A pointer to the `t_ps_node_content` stored in the given node.
  */
-static t_ps_node_content	*get_ps_content(t_stack_node *node)
+t_ps_node_content	*get_ps_content(t_stack_node *node)
 {
 	if (!node)
 		return (NULL);

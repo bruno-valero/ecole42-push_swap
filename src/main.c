@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/08/22 22:40:29 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/23 18:04:25 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,14 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	print_stack(push_swap->stack_a);
-	push_swap->ops->rra(push_swap);
 	push_swap->ops->pb(push_swap);
-	push_swap->ops->ra(push_swap);
 	push_swap->ops->pb(push_swap);
-	write(1, "aqui\n", 5);
-	push_swap->ops->rb(push_swap);
-	push_swap->ops->rrb(push_swap);
+	push_swap->ops->pb(push_swap);
+	push_swap->ops->pb(push_swap);
 	print_stack(push_swap->stack_a);
 	print_stack(push_swap->stack_b);
-	printf("stack_a.bigger: %d, stack_a.smaller: %d\n", push_swap->stack_a->bigger, push_swap->stack_a->smaller);
-	printf("stack_b.bigger: %d, stack_b.smaller: %d\n", push_swap->stack_b->bigger, push_swap->stack_b->smaller);
-	push_swap->ops->pa(push_swap);
-	print_stack(push_swap->stack_a);
-	print_stack(push_swap->stack_b);
+	printf("closest bigger: %d\n", get_ps_content(turk_find_closest_bigger(push_swap->stack_a->stack->top, push_swap->stack_b).value)->value);
 	return (0);
 }
+
+// 1 5 9 7 4 8 2 0

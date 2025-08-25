@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/08/23 18:04:25 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:58:32 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,17 @@ int	main(int argc, char **argv)
 	push_swap->ops->pb(push_swap);
 	print_stack(push_swap->stack_a);
 	print_stack(push_swap->stack_b);
-	printf("closest bigger: %d\n", get_ps_content(turk_find_closest_bigger(push_swap->stack_a->stack->top, push_swap->stack_b).value)->value);
+	t_find_closest_result result;
+	result = turk_find_closest_bigger(push_swap->stack_a->stack->top, push_swap->stack_b, NULL);
+	if (result.succeed)
+		printf("closest bigger from %d: %d\n", contentof(push_swap->stack_a->stack->top)->value, contentof(result.value)->value);
+	else
+		printf("closest bigger not found!");
+	result = turk_find_closest_smaller(push_swap->stack_a->stack->top, push_swap->stack_b, NULL);
+	if (result.succeed)
+		printf("closest smaller from %d: %d\n", contentof(push_swap->stack_a->stack->top)->value, contentof(result.value)->value);
+	else
+		printf("closest smaller not found!");
 	return (0);
 }
 

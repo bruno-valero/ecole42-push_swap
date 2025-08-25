@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:26:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/23 18:07:04 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:54:16 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static t_ts_stack	*new_ts_stack(t_ps_stack *ps_stack)
 	ts_stack->min_cost = 0;
 	ts_stack->min_cost_index = 0;
 	ts_stack->ps_stack = ps_stack;
-	// ts_stack->find_target
-	// ts_stack->push 
+	ts_stack->find_target = find_target_node;
+	// ts_stack->push
 	ts_stack->sort_three = turk_sort_three;
 	ts_stack->destroy = ts_stack_destroy;
 	return (ts_stack);

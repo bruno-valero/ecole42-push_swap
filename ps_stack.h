@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by valero            #+#    #+#             */
-/*   Updated: 2025/08/23 11:30:27 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:15:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ struct s_ps_stack
 struct s_ps_node_content
 {
 	int				value;
+	int				target_index;
+	int				self_index;
 	t_stack_node	*target_node;
+	int				push_cost;
+	int				other_stack_length;
+	int				self_stack_length;
 };
 
 t_ps_stack			*new_ps_stack(int is_stack_a);
@@ -44,7 +49,7 @@ void				ps_stack_update_on_transfer(
 						t_ps_stack *self, t_ps_stack *other_stack);
 int					compare_ps_node(void *self_content, void *content);
 void				ps_node_content_destroy(void *node);
-t_ps_node_content	*get_ps_content(t_stack_node *node);
+t_ps_node_content	*contentof(t_stack_node *node);
 void				*destroy_ps_stacks(
 						t_ps_stack *stack_a, t_ps_stack *stack_b);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/23 13:22:12 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:53:19 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "validate.h"
 # include "push_swap_ops.h"
 # include "turk_sort.h"
-# include "turk_find_closest.h"
 # include <stdio.h>
 
 typedef struct s_push_swap		t_push_swap;

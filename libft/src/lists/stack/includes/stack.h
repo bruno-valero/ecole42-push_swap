@@ -45,6 +45,8 @@ typedef struct s_stack
 
 t_stack			*new_stack(void);
 t_stack_node	*stack_new_node(void *content);
+void			*stack_delete_node(t_stack_node **node_ref,
+					void (*del_node_content)(void *content));
 int				stack_swap_first_node(t_stack *self);
 int				stack_rotate(t_stack *self, int reverse);
 int				stack_push(t_stack *self, t_stack_node *node);

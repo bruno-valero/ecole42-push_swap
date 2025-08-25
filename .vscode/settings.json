@@ -18,6 +18,12 @@
 		"ostream": "c",
 		"streambuf": "c",
 		"functional": "c",
-		"tuple": "c"
+		"tuple": "c",
+		"system_error": "c",
+		"utility": "c",
+		"turk_find_closest.h": "c",
+		"turk_find_target.h": "c",
+		"turk_find_lower_cost.h": "c",
+		"turk_find_by_index.h": "c"
 	}
 }

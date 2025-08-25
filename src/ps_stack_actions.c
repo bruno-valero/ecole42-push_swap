@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack_actions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by valero            #+#    #+#             */
-/*   Updated: 2025/08/23 11:31:07 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:58:32 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ void	ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
 		other_stack->smaller = INT_MAX;
 		other_stack->bigger = INT_MIN;
 	}
-	other_top_content = get_ps_content(other_stack->stack->top);
+	other_top_content = contentof(other_stack->stack->top);
 
 	if (self->bigger == other_top_content->value && self->stack->length)
-		self->bigger = get_ps_content(find_ps_bigger_node(self, NULL))->value;
+		self->bigger = contentof(find_ps_bigger_node(self, NULL))->value;
 	if (self->smaller == other_top_content->value && self->stack->length)
-		self->smaller = get_ps_content(find_ps_smaller_node(self, NULL))->value;
+		self->smaller = contentof(find_ps_smaller_node(self, NULL))->value;
 	if (!self->stack->length)
 	{
 		self->smaller = INT_MAX;
@@ -84,60 +84,6 @@ void	ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
 		other_stack->bigger = other_top_content->value;
 	if (other_stack->smaller > other_top_content->value)
 		other_stack->smaller = other_top_content->value;
-}
-
-/**
- * # Retrieves the Typed Content of a Push Swap Node
- *
- * ---
- *
- * Provides access to the content stored in a `t_stack_node`, ensuring
- * it is returned as the correct type (`t_ps_node_content`).
- *
- * ---
- *
- * ## Why this function exists:
- *
- * - In a generic stack implementation, each node stores its data as a
- *   `void *` (generic pointer).
- * - While this allows flexibility, it requires explicit casting back
- *   to the correct type before use.
- * - This function centralizes and standardizes that casting, making the
- *   code cleaner and safer to maintain.
- *
- * ---
- *
- * ## How it works:
- *
- * 1. Takes a pointer to a `t_stack_node`.
- *
- * 2. Accesses the generic `content` field of the node.
- *
- * 3. Casts it into the specific type used in `push_swap`: `t_ps_node_content`.
- *
- * 4. Returns the correctly typed pointer.
- *
- * ---
- *
- * ## Benefits:
- *
- * - Removes repetitive casting throughout the codebase.
- * - Improves readability by making the programmer’s intent explicit.
- * - Reduces the chance of type-related mistakes when accessing node content.
- *
- * ---
- *
- * @param node  The stack node whose content will be accessed.
- *
- * ---
- *
- * @return A pointer to the `t_ps_node_content` stored in the given node.
- */
-t_ps_node_content	*get_ps_content(t_stack_node *node)
-{
-	if (!node)
-		return (NULL);
-	return ((t_ps_node_content *)node->content);
 }
 
 /**
@@ -201,10 +147,10 @@ static t_stack_node	*find_ps_bigger_node(
 	bigger = top;
 	while (start < end)
 	{
-		if (get_ps_content(top)->value > get_ps_content(bigger)->value)
+		if (contentof(top)->value > contentof(bigger)->value)
 			bigger = top;
-		if (bottom != top && get_ps_content(bottom)->value
-			> get_ps_content(bigger)->value)
+		if (bottom != top && contentof(bottom)->value
+			> contentof(bigger)->value)
 			bigger = bottom;
 		top = top->prev;
 		bottom = bottom->next;
@@ -275,10 +221,10 @@ static t_stack_node	*find_ps_smaller_node(
 	smaller = top;
 	while (start < end)
 	{
-		if (get_ps_content(top)->value < get_ps_content(smaller)->value)
+		if (contentof(top)->value < contentof(smaller)->value)
 			smaller = top;
-		if (bottom != top && get_ps_content(bottom)->value
-			< get_ps_content(smaller)->value)
+		if (bottom != top && contentof(bottom)->value
+			< contentof(smaller)->value)
 			smaller = bottom;
 		top = top->prev;
 		bottom = bottom->next;

@@ -3,49 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   turk_find_closest_bigger.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 13:10:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/23 19:32:19 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:21:21 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_ps_node_content	make_content(int value);
+static void	change_closest_bigger(t_stack_node *curr_node,
+				t_find_closest_temps *temps, t_find_closest_result *result);
 
-t_find_closest_result	turk_find_closest_bigger(
-	t_stack_node *node, t_ps_stack *other_stack)
+t_find_closest_result	turk_find_closest_bigger(t_stack_node *node,
+					t_ps_stack *stack, t_stack_node *temp_node)
 {
 	t_find_closest_result	result;
-	t_stack_node			*current_node;
-	t_stack_node			*closest_bigger;
-	int						index;
+	t_find_closest_temps	temps;
 
-	index = 0;
-	current_node = other_stack->stack->top;
-	closest_bigger = current_node;
-	while (current_node)
+	init_temps(&temps, stack);
+	temp_node = stack_new_node(new_ps_node_content(INT_MAX));
+	result.value = temp_node;
+	while (temps.back_idx >= (int)(stack->stack->length / 2))
 	{
-		if (get_ps_content(current_node)->value
-			> get_ps_content(node)->value
-			&& get_ps_content(current_node)->value
-			< get_ps_content(closest_bigger)->value)
-			closest_bigger = current_node;
-		current_node = current_node->prev;
-		index++;
+		if (is_bigger(temps.top, node) && is_smaller(temps.top, result.value))
+			change_closest_bigger(temps.top, &temps, &result);
+		if (temps.bot != temps.top && is_bigger(temps.bot, node)
+			&& is_smaller(temps.bot, result.value))
+			change_closest_bigger(temps.bot, &temps, &result);
+		fill_get_closest_result(&temps, &result, stack);
+		continue_loop(&temps);
 	}
-	result.index = index;
-	result.value = closest_bigger;
+	if (result.value == temp_node)
+	{
+		stack_delete_node(&temp_node, ps_node_content_destroy);
+		result.succeed = 0;
+	}
 	return (result);
 }
 
-static t_ps_node_content	make_content(int value)
+static void	change_closest_bigger(t_stack_node *curr_node,
+					t_find_closest_temps *temps, t_find_closest_result *result)
 {
-	t_ps_node_content	content;
+	int	index;
 
-	content.value = value;
-	content.target_node = NULL;
-	return (content);
+	if (curr_node == temps->top)
+		index = temps->front_idx;
+	else
+		index = temps->back_idx;
+	if (((!index || index == temps->stack_length - 1)
+			&& contentof(result->value)->value == INT_MAX))
+		stack_delete_node(&result->value, ps_node_content_destroy);
+	result->value = curr_node;
+	result->index = index;
+	result->succeed = 1;
 }
-

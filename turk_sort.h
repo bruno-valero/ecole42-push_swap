@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   turk_sort.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 22:12:34 by valero            #+#    #+#             */
-/*   Updated: 2025/08/23 16:25:18 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/08/24 22:46:41 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TURK_SORT_H
 # define TURK_SORT_H
+
+
+# include "turk_find_closest.h"
+# include "turk_find_target.h"
+# include "turk_calculate_cost.h"
+# include "turk_find_lower_cost.h"
+# include "turk_find_by_index.h"
 
 typedef struct s_ps_stack	t_ps_stack;
 

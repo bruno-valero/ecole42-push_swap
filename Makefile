@@ -8,10 +8,11 @@ SRC_FILES = src/ops_rotate_stacks.c src/ops_swap_stacks.c src/ps_stack_actions.c
 			src/ps_stack.c src/push_swap.c src/validate_input_number.c src/main.c \
 			src/ps_stack_content.c src/push_swap_ops_both.c src/push_swap_ops_push.c \
 			src/push_swap_ops_rotate.c src/push_swap_ops_swap.c src/valid_input_number.c \
-			src/turk_find_closest_smaller.c src/turk_find_closest_bigger.c src/turk_find_closest_utils.c \
-			src/turk_sort_three.c src/turk_sort.c src/turk_calculate_cost.c src/turk_calculate_cost_utils.c \
-			src/turk_find_target.c src/turk_sort_run.c src/turk_find_lower_cost.c src/turk_push_lower_cost_node.c \
-			src/turk_find_by_index.c
+			src/turk_find_closest_smaller.c src/turk_find_closest_bigger.c src/turk_find_closest_utils_1.c \
+			src/turk_find_closest_utils_2.c src/turk_sort_three.c src/turk_sort.c src/turk_find_target.c \
+			src/turk_calculate_cost_utils.c src/turk_calculate_cost_one_node.c src/turk_calculate_cost.c src/turk_find_lower_cost.c \
+			src/turk_find_by_index.c src/turk_push_lower_cost.c src/turk_push_lower_cost_both_on_top.c src/turk_sort_run.c
+
 
 SLEEP = 0.07
 

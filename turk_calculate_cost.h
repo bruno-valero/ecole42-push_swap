@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 20:56:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 20:59:04 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/30 18:11:07 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 typedef struct s_stack_node	t_stack_node;
 
-int	is_above_center(t_stack_node *node);
-int	is_both_above_center(t_stack_node *node);
-int	is_both_below_center(t_stack_node *node);
+int		is_above_center(t_stack_node *node);
+int		is_both_above_center(t_stack_node *node);
+int		is_both_below_center(t_stack_node *node);
+void	turk_calculate_push_cost(t_stack_node *node);
+void	turk_calculate_stack_push_cost(
+			t_push_swap *push_swap, int is_on_stack_a);
 
 #endif

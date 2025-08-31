@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 22:44:27 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 22:46:52 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/30 16:30:03 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 typedef struct s_stack_node	t_stack_node;
 typedef struct s_stack		t_stack;
 
-t_stack_node	*find_by_index(int index, t_stack stack);
+t_stack_node	*find_by_index(int index, t_stack *stack);
 
 #endif

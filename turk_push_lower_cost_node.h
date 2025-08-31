@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_push_lower_cost_node.c                        :+:      :+:    :+:   */
+/*   turk_push_lower_cost_node.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 21:50:29 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 22:48:32 by valero           ###   ########.fr       */
+/*   Created: 2025/08/30 14:41:35 by valero            #+#    #+#             */
+/*   Updated: 2025/08/30 18:42:19 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef TURK_PUSH_LOWER_COST_NODE_H
+# define TURK_PUSH_LOWER_COST_NODE_H
 
-int	push_lower_cost_node(t_stack_node *node, t_push_swap *push_swap, int is_pb)
-{
-	t_stack_node	*self;
-	t_stack_node	*target;
+typedef struct s_stack_node	t_stack_node;
+typedef struct s_push_swap	t_push_swap;
 
-	// contentof(node)
-	if (is_pb)
-	{
-		if (is_both_above_center(node))
-		{
-			while ()
-			{
-				push_swap->ops->rr(push_swap);
-			}
-		}
-		else if (is_both_below_center(node))
-		{
+void	turk_put_both_on_top(t_stack_node *node,
+			t_push_swap *push_swap, int is_on_stack_a);
+int		push_lower_cost_node(t_push_swap *push_swap, int is_pb);
 
-		}
-		else if (is_above_center(node))
-		{
-
-		}
-		else
-		{
-
-		}
-	}
-}
+#endif

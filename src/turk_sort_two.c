@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_find_target.h                                 :+:      :+:    :+:   */
+/*   turk_sort_two.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 16:50:51 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 16:58:07 by valero           ###   ########.fr       */
+/*   Created: 2025/08/30 19:12:11 by valero            #+#    #+#             */
+/*   Updated: 2025/08/30 19:17:02 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TURK_FIND_TARGET_H
-# define TURK_FIND_TARGET_H
+#include "push_swap.h"
 
-typedef struct s_stack_node	t_stack_node;
-typedef struct s_ts_stack	t_ts_stack;
+int	turk_sort_two(t_ts_stack *self, t_push_swap *push_swap)
+{
+	t_stack	*stack;
 
-int	turk_find_stack_targets(t_push_swap *push_swap, int is_on_stack_a);
-
-#endif
+	stack = self->ps_stack->stack;
+	if (stack->length != 2)
+		return (0);
+	if (valueof(stack->top) > valueof(stack->bottom))
+		push_swap->ops->sa(push_swap);
+	return (1);
+}

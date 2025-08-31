@@ -6,16 +6,15 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 21:47:00 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 21:48:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/30 18:25:12 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TURK_FIND_LOWER_COST_H
 # define TURK_FIND_LOWER_COST_H
 
-typedef struct s_stack_node				t_stack_node;
-typedef struct s_ts_stack				t_ts_stack;
+typedef struct s_ts_stack	t_ts_stack;
 
-t_stack_node	*find_lower_cost(t_ts_stack	*ts_stack);
+t_stack_node	*find_lower_cost(t_push_swap *push_swap, int is_on_stack_a);
 
 #endif

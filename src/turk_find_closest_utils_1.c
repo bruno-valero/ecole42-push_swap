@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_find_closest_utils.c                          :+:      :+:    :+:   */
+/*   turk_find_closest_utils_1.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:28:44 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 20:00:13 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/30 16:55:07 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	init_temps(t_find_closest_temps *temps, t_ps_stack *stack)
 {

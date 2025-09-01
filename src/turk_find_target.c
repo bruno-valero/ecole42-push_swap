@@ -6,94 +6,116 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:45:38 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 18:51:02 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 18:12:59 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	turk_find_stack_targets_loop(t_stack *target_stack,
-				t_stack *other_stack);
-static int	turk_find_target(t_stack_node *node, t_ts_stack *current_stack,
+static int	turk_find_stack_targets_loop(t_ts_stack *current_stack,
 				t_ts_stack *other_stack);
-static int	update_content(t_stack_node *node, t_ts_stack *current_ts_stack,
-				t_ts_stack *other_ts_stack, int target_index);
+static int	turk_find_target(t_stack_node *node, int curr_idx,
+				t_ts_stack *current_ts_stack, t_ts_stack *other_ts_stack);
+static int	update_indexes(t_find_closest_result search_result,
+				t_stack_node *curr_node, int curr_idx, int is_stack_a);
+static int	update_content(t_stack_node *node, t_stack *current_stack,
+				t_stack *other_stack, int target_index);
 
 int	turk_find_stack_targets(t_push_swap *push_swap, int is_on_stack_a)
 {
-	t_stack			*stack_a;
-	t_stack			*stack_b;
-	t_stack_node	*top;
-	t_stack_node	*bot;
+	t_ts_stack			*stack_a;
+	t_ts_stack			*stack_b;
 
 	if (!push_swap || !push_swap->stack_a || !push_swap->stack_b
 		|| !push_swap->stack_a->stack || !push_swap->stack_b->stack)
 		return (0);
-	stack_a = push_swap->stack_a->stack;
-	stack_b = push_swap->stack_b->stack;
+	stack_a = push_swap->turk_sort->ts_stack_a;
+	stack_b = push_swap->turk_sort->ts_stack_b;
 	if (is_on_stack_a)
 		return (turk_find_stack_targets_loop(stack_a, stack_b));
 	return (turk_find_stack_targets_loop(stack_b, stack_a));
 }
 
-static int	turk_find_stack_targets_loop(t_stack *target_stack,
-				t_stack *other_stack)
+static int	turk_find_stack_targets_loop(t_ts_stack *current_stack,
+				t_ts_stack *other_stack)
 {
 	t_stack_node	*top;
 	t_stack_node	*bot;
+	t_stack			*curr_stack;
 	int				idx;
 
-	if (!top || !bot)
+	if (!current_stack || !current_stack->ps_stack
+		|| !current_stack->ps_stack->stack || !other_stack
+		|| !other_stack->ps_stack || !other_stack->ps_stack->stack)
 		return (0);
-	top = target_stack->top;
-	bot = target_stack->bottom;
+	curr_stack = current_stack->ps_stack->stack;
+	top = curr_stack->top;
+	bot = curr_stack->bottom;
 	idx = -1;
-	while (++idx <= (target_stack->length / 2))
+	while ((unsigned int)(++idx)
+		<= (curr_stack->length / 2))
 	{
-		turk_find_target(top, target_stack, other_stack);
+		turk_find_target(top, idx, current_stack, other_stack);
 		if (top != bot)
-			turk_find_target(bot, target_stack, other_stack);
+			turk_find_target(bot, curr_stack->length - 1 - idx,
+				current_stack, other_stack);
 		top = top->prev;
 		bot = bot->next;
 	}
 	return (1);
 }
 
-static int	turk_find_target(t_stack_node *node, t_ts_stack *current_stack,
-	t_ts_stack *other_stack)
+static int	turk_find_target(t_stack_node *node, int curr_idx,
+				t_ts_stack *current_ts_stack, t_ts_stack *other_ts_stack)
 {
 	t_find_closest_result	search_result;
 	int						target_index;
 
-	if (!node || !other_stack || !other_stack->ps_stack
-		|| !other_stack->ps_stack->stack)
+	if (!node || !other_ts_stack || !other_ts_stack->ps_stack
+		|| !other_ts_stack->ps_stack->stack)
 		return (-1);
-	if (other_stack->ps_stack->is_stack_a)
+	if (current_ts_stack->ps_stack->is_stack_a)
 	{
-		search_result = turk_find_closest_smaller(node, other_stack, NULL);
+		search_result = turk_find_closest_smaller(
+				node, other_ts_stack->ps_stack, NULL);
+		target_index = update_indexes(search_result, node, curr_idx, 1);
+		return (update_content(node, current_ts_stack->ps_stack->stack,
+				other_ts_stack->ps_stack->stack, target_index));
+	}
+	search_result = turk_find_closest_bigger(
+			node, other_ts_stack->ps_stack, NULL);
+	target_index = update_indexes(search_result, node, curr_idx, 0);
+	return (update_content(node, current_ts_stack->ps_stack->stack,
+			other_ts_stack->ps_stack->stack, target_index));
+}
+
+static int	update_indexes(t_find_closest_result search_result,
+				t_stack_node *curr_node, int curr_idx, int is_stack_a)
+{
+	int	target_index;
+
+	contentof(curr_node)->self_index = curr_idx;
+	if (is_stack_a)
+	{
 		if (!search_result.succeed)
 			target_index = search_result.bigger_index;
 		else
 			target_index = search_result.index;
-		return (update_content(node, current_stack, other_stack, target_index));
+		return (target_index);
 	}
-	search_result = turk_find_closest_bigger(node, other_stack, NULL);
 	if (!search_result.succeed)
 		target_index = search_result.smaller_index;
 	else
 		target_index = search_result.index;
-	return (update_content(node, current_stack, other_stack, target_index));
+	return (target_index);
 }
 
-static int	update_content(t_stack_node *node, t_ts_stack *current_ts_stack,
-	t_ts_stack *other_ts_stack, int target_index)
+static int	update_content(t_stack_node *node, t_stack *current_stack,
+	t_stack *other_stack, int target_index)
 {
 	t_ps_node_content	*content;
-	t_stack				*current_stack;
-	t_stack				*other_stack;
 
 	current_stack = current_stack;
-	other_stack = other_ts_stack->ps_stack->stack;
 	content = contentof(node);
 	content->target_index = target_index;
 	content->target_node = find_by_index(target_index, other_stack);

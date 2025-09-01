@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 22:28:02 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 16:30:09 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 12:29:15 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack_node	*find_by_index(int index, t_stack *stack)
 		curr_index = 0;
 	else
 		curr_index = stack->length - 1;
-	while (curr_index != stack->length / 2)
+	while ((unsigned int)curr_index != stack->length / 2)
 	{
 		if (curr_index == index)
 			break ;
@@ -44,5 +44,5 @@ t_stack_node	*find_by_index(int index, t_stack *stack)
 
 static int	is_index_above_center(int index, t_stack *stack)
 {
-	return (index < stack->length / 2);
+	return ((unsigned int)index < stack->length / 2);
 }

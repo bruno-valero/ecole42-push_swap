@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 14:41:32 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 16:55:14 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:37:27 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_find_closest_result	turk_find_closest_smaller(t_stack_node *node,
 	t_find_closest_temps	temps;
 
 	init_temps(&temps, stack);
-	temp_node = stack_new_node(new_ps_node_content(INT_MAX));
+	temp_node = stack_new_node(new_ps_node_content(INT_MIN));
 	result.value = temp_node;
 	while (temps.back_idx >= (int)(stack->stack->length / 2))
 	{

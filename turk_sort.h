@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 22:12:34 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 19:37:48 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 12:30:51 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ struct s_turk_sort
 {
 	t_ts_stack	*ts_stack_a;
 	t_ts_stack	*ts_stack_b;
-	void		*(*run)(t_push_swap *push_swap);
+	void		(*run)(t_push_swap *push_swap);
 	void		*(*destroy)(t_turk_sort	**self_ref);
 };
 
@@ -50,6 +50,6 @@ void		*ts_stack_destroy(t_ts_stack	**self_ref);
 
 int			turk_sort_three(t_ts_stack *self, t_push_swap *push_swap);
 int			turk_sort_two(t_ts_stack *self, t_push_swap *push_swap);
-void		*turk_run(t_push_swap *push_swap);
+void		turk_run(t_push_swap *push_swap);
 
 #endif

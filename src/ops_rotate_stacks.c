@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:31:24 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 16:37:26 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 16:50:07 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ int	rotate_reverse_stack_both(t_push_swap	*push_swap)
 		push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 0);
 		return (0);
 	}
-	return (!!write(1, "rrr\n", 3));
+	return (!!write(1, "rrr\n", 4));
 }

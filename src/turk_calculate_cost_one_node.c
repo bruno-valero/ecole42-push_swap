@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:29:01 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 17:50:34 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 12:27:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	costof_both_below(t_stack_node *node, int *push_cost,
 	int	target_ditance;
 
 	self_ditance = contentof(node)->self_stack_length - self_index;
-	target_ditance = contentof(node)->other_stack_length - self_index;
+	target_ditance = contentof(node)->other_stack_length - target_index;
 	if (self_ditance > target_ditance)
 		*push_cost = self_ditance;
 	else
@@ -67,7 +67,7 @@ static void	costof_self_above(t_stack_node *node, int *push_cost,
 {
 	int	target_ditance;
 
-	target_ditance = contentof(node)->other_stack_length - self_index;
+	target_ditance = contentof(node)->other_stack_length - target_index;
 	*push_cost = self_index + target_ditance;
 }
 

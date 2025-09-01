@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 11:13:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/24 19:58:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 21:51:53 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static int	rotate_reverse(t_ps_stack	*ps_stack, t_push_swap *push_swap)
 static int	swap(t_ps_stack	*ps_stack, t_push_swap *push_swap)
 {
 	if (ps_stack->is_stack_a)
-		push_swap->ops->ra(push_swap);
+		push_swap->ops->sa(push_swap);
 	else
-		push_swap->ops->rb(push_swap);
+		push_swap->ops->sb(push_swap);
 	return (1);
 }
 

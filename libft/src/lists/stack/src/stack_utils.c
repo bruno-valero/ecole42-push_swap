@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:06:57 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 22:56:00 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 13:22:31 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,11 @@ t_stack_node	*stack_new_node(void *content)
 void	*stack_delete_node(t_stack_node **node_ref,
 		void (*del_node_content)(void *content))
 {
-	t_stack_node	*node;
-
-	node = *node_ref;
-	if (!node_ref || !node)
+	if (!node_ref || !*node_ref)
 		return (NULL);
-	del_node_content(&node->content);
-	free(node);
-	node = NULL;
+	del_node_content(&(*node_ref)->content);
+	free(*node_ref);
+	*node_ref = NULL;
 	return (NULL);
 }
 

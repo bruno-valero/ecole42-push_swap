@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:54:42 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 19:15:52 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 11:58:13 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ t_ps_node_content	*contentof(t_stack_node *node)
 	return ((t_ps_node_content *)node->content);
 }
 
-t_ps_node_content	*valueof(t_stack_node *node)
+int	valueof(t_stack_node *node)
 {
 	if (!node)
-		return (NULL);
+		return (0);
 	return (contentof(node)->value);
 }

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 18:29:01 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 18:11:11 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 12:28:23 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	turk_calculate_stack_push_cost(
 	top = stack->top;
 	bot = stack->bottom;
 	idx = -1;
-	while (++idx <= (stack->length / 2))
+	while ((unsigned int)(++idx) <= (stack->length / 2))
 	{
 		turk_calculate_push_cost(top);
 		if (top != bot)

@@ -25,6 +25,7 @@
 		"turk_find_target.h": "c",
 		"turk_find_lower_cost.h": "c",
 		"turk_find_by_index.h": "c",
-		"turk_calculate_cost.h": "c"
+		"turk_calculate_cost.h": "c",
+		"turk_sort.h": "c"
 	}
 }

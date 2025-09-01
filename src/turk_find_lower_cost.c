@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 21:23:26 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 18:25:03 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 16:13:58 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static t_stack_node	*turk_find_lower_cost_loop(t_ps_stack *ps_stack)
 	bot = ps_stack->stack->bottom;
 	lower_cost_node = top;
 	idx = -1;
-	while (++idx <= (ps_stack->stack->length / 2))
+	while ((unsigned int)(++idx) <= (ps_stack->stack->length / 2))
 	{
-		if (contentof(top)->push_cost <= contentof(lower_cost_node)->push_cost)
+		if (contentof(top)->push_cost < contentof(lower_cost_node)->push_cost)
 			lower_cost_node = top;
 		if (bot != top && contentof(bot)->push_cost
-			<= contentof(lower_cost_node)->push_cost)
+			< contentof(lower_cost_node)->push_cost)
 			lower_cost_node = bot;
 		top = top->prev;
 		bot = bot->next;

@@ -6,7 +6,7 @@
 /*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:40:31 by valero            #+#    #+#             */
-/*   Updated: 2025/08/30 18:48:49 by valero           ###   ########.fr       */
+/*   Updated: 2025/08/31 19:40:12 by valero           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	push_lower_cost_node(t_push_swap *push_swap, int is_pb)
 {
 	t_stack_node	*lower_cost_node;
 
+	while (is_pb && push_swap->stack_b->stack->length < 2)
+		push_swap->ops->pb(push_swap);
 	turk_find_stack_targets(push_swap, is_pb);
 	turk_calculate_stack_push_cost(push_swap, is_pb);
 	lower_cost_node = find_lower_cost(push_swap, is_pb);
@@ -26,5 +28,8 @@ int	push_lower_cost_node(t_push_swap *push_swap, int is_pb)
 		return (1);
 	}
 	push_swap->ops->pa(push_swap);
+	// if (valueof(push_swap->stack_a->stack->top)
+	// 	> valueof(push_swap->stack_a->stack->top->prev))
+	// 	push_swap->ops->sa(push_swap);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_find_target.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:45:38 by valero            #+#    #+#             */
-/*   Updated: 2025/08/31 18:12:59 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 07:55:00 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ static int	update_content(t_stack_node *node, t_stack *current_stack,
 {
 	t_ps_node_content	*content;
 
-	current_stack = current_stack;
 	content = contentof(node);
 	content->target_index = target_index;
 	content->target_node = find_by_index(target_index, other_stack);

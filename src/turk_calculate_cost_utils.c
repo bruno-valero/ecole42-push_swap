@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_calculate_cost_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 20:56:18 by valero            #+#    #+#             */
-/*   Updated: 2025/08/31 15:55:25 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 07:54:02 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_above_center(t_stack_node *node)
 {
 	return (contentof(node)->self_index
-		< (contentof(node)->self_stack_length / 2));
+		<= (contentof(node)->self_stack_length / 2));
 }
 
 int	is_both_above_center(t_stack_node *node)

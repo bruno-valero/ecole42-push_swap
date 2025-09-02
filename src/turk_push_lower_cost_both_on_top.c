@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   turk_push_lower_cost_both_on_top.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 21:50:29 by valero            #+#    #+#             */
-/*   Updated: 2025/08/31 19:04:13 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 18:41:00 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	put_thebothabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
-				t_ps_stack *other_stack, t_push_swap *push_swap);
-static void	put_thebothabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
-				t_ps_stack *other_stack, t_push_swap *push_swap);
-static void	put_theaabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
-				t_ps_stack *other_stack);
-static void	put_theabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
-				t_ps_stack *other_stack);
 
 void	turk_put_both_on_top(t_stack_node *node,
 			t_push_swap *push_swap, int is_on_stack_a)
@@ -47,7 +38,7 @@ void	turk_put_both_on_top(t_stack_node *node,
 		put_theabelow_on_top(node, self_stack, other_stack);
 }
 
-static void	put_thebothabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
+void	put_thebothabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
 				t_ps_stack *other_stack, t_push_swap *push_swap)
 {
 	int		is_self_on_top;
@@ -75,7 +66,7 @@ static void	put_thebothabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
 	}
 }
 
-static void	put_thebothabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
+void	put_thebothabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
 				t_ps_stack *other_stack, t_push_swap *push_swap)
 {
 	int		is_self_on_top;
@@ -103,7 +94,7 @@ static void	put_thebothabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
 	}
 }
 
-static void	put_theaabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
+void	put_theaabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
 				t_ps_stack *other_stack)
 {
 	int		is_self_on_top;
@@ -124,7 +115,7 @@ static void	put_theaabove_on_top(t_stack_node *node, t_ps_stack *self_stack,
 	}
 }
 
-static void	put_theabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
+void	put_theabelow_on_top(t_stack_node *node, t_ps_stack *self_stack,
 				t_ps_stack *other_stack)
 {
 	int		is_self_on_top;

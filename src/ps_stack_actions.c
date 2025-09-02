@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack_actions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by valero            #+#    #+#             */
-/*   Updated: 2025/08/24 19:58:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 10:29:13 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ static t_stack_node	*find_ps_bigger_node(
 	top = stack->stack->top;
 	bottom = stack->stack->bottom;
 	bigger = top;
-	while (start < end)
+	while (start <= end)
 	{
 		if (contentof(top)->value > contentof(bigger)->value)
 			bigger = top;
@@ -219,7 +219,7 @@ static t_stack_node	*find_ps_smaller_node(
 	top = stack->stack->top;
 	bottom = stack->stack->bottom;
 	smaller = top;
-	while (start < end)
+	while (start <= end)
 	{
 		if (contentof(top)->value < contentof(smaller)->value)
 			smaller = top;

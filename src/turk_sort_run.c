@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_sort_run.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:34:20 by valero            #+#    #+#             */
-/*   Updated: 2025/08/31 22:35:38 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 18:06:36 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	turk_run(t_push_swap *push_swap)
 
 	stack_a = push_swap->stack_a->stack;
 	stack_b = push_swap->stack_b->stack;
+	if (is_ordered(stack_a))
+		return ;
 	if (stack_a->length == 1)
 		return ;
 	if (stack_a->length == 2)
@@ -34,9 +36,9 @@ void	turk_run(t_push_swap *push_swap)
 	turk_sort_three(push_swap->turk_sort->ts_stack_a, push_swap);
 	while (stack_b->length)
 		push_lower_cost_node(push_swap, 0);
-	printf("is_ordered: %d\n", is_ordered(push_swap->stack_a->stack));
+	// printf("is_ordered: %d\n", is_ordered(push_swap->stack_a->stack));
 	final_sort(push_swap);
-	printf("is_ordered: %d\n", is_ordered(push_swap->stack_a->stack));
+	// printf("is_ordered: %d\n", is_ordered(push_swap->stack_a->stack));
 }
 
 static void	final_sort(t_push_swap *push_swap)
@@ -53,7 +55,7 @@ static void	final_sort(t_push_swap *push_swap)
 		top = top->prev;
 		unsorted_count++;
 	}
-	if (unsorted_count < (stack_a->length / 2))
+	if (unsorted_count <= (stack_a->length / 2))
 		while (valueof(stack_a->top) > valueof(stack_a->bottom))
 			push_swap->ops->ra(push_swap);
 	if (unsorted_count > (stack_a->length / 2))

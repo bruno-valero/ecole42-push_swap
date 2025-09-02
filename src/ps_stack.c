@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_stack.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/24 19:58:32 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 19:09:23 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ps_stack_destroy(t_ps_stack	**self)
 	*self = NULL;
 }
 
-void	*destroy_ps_stacks(t_ps_stack *stack_a, t_ps_stack *stack_b)
+void	*destroy_ps_stacks(t_ps_stack **stack_a, t_ps_stack **stack_b)
 {
-	if (stack_a && stack_a->stack)
-		stack_a->destroy(&stack_a);
-	if (stack_b && stack_b->stack)
-		stack_b->destroy(&stack_b);
+	if (stack_a && *stack_a && (*stack_a)->stack)
+		(*stack_a)->destroy(stack_a);
+	if (stack_a && *stack_b && (*stack_b)->stack)
+		(*stack_b)->destroy(stack_b);
 	return (NULL);
 }

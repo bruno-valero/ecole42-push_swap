@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_push_lower_cost.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:40:31 by valero            #+#    #+#             */
-/*   Updated: 2025/08/31 19:40:12 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 09:29:41 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	push_lower_cost_node(t_push_swap *push_swap, int is_pb)
 
 	while (is_pb && push_swap->stack_b->stack->length < 2)
 		push_swap->ops->pb(push_swap);
+	if (is_pb && push_swap->stack_a->stack->length == 3)
+		return (1);
 	turk_find_stack_targets(push_swap, is_pb);
 	turk_calculate_stack_push_cost(push_swap, is_pb);
 	lower_cost_node = find_lower_cost(push_swap, is_pb);

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by valero            #+#    #+#             */
-/*   Updated: 2025/08/22 19:21:55 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:29:40 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ static t_extract_number_result	extract_number(
 		result.validation_info = NUMBER_VALIDATION_ERROR;
 		return (result);
 	}
-	if (len > INT_MAX_LENGTH)
+	if (!ft_issign(*str) && len > INT_MAX_LENGTH)
 	{
 		result.validation_info = NUMBER_VALIDATION_ERROR;
 		return (result);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_sort_three.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 11:13:52 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/31 21:51:53 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 09:54:56 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static int	swap(t_ps_stack	*ps_stack, t_push_swap *push_swap)
 static int	node_value(t_stack *stack, int index)
 {
 	if (!index)
-		return (contentof(stack->top)->value);
+		return (valueof(stack->top));
 	else if (index == 1)
-		return (contentof(stack->top->prev)->value);
-	return (contentof(stack->bottom)->value);
+		return (valueof(stack->top->prev));
+	return (valueof(stack->bottom));
 }

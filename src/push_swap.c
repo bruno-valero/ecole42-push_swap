@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/30 19:24:37 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/01 19:06:35 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_push_swap	*new_push_swap(void)
 	ps->turk_sort = new_turk_sort(ps->stack_a, ps->stack_b);
 	if (!ps->stack_a || !ps->stack_b || !ps->ops || !ps->turk_sort)
 	{
-		destroy_ps_stacks(ps->stack_a, ps->stack_b);
+		destroy_ps_stacks(&ps->stack_a, &ps->stack_b);
 		ps->turk_sort->destroy(&ps->turk_sort);
 		return (ps->ops->destroy(&ps->ops));
 	}
@@ -42,6 +42,7 @@ void	push_swap_destroy(t_push_swap	**self)
 	(*self)->stack_a->destroy(&(*self)->stack_a);
 	(*self)->stack_b->destroy(&(*self)->stack_b);
 	(*self)->ops->destroy(&(*self)->ops);
+	(*self)->turk_sort->destroy(&(*self)->turk_sort);
 	free(*self);
 	*self = NULL;
 }

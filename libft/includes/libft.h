@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:35:01 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/21 12:04:23 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/02 17:12:03 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include "stack.h"
 # include "libstr.h"
+# include "get_next_line.h"
 # include "libft_utils.h"
 
 typedef struct s_list

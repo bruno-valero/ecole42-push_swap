@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/01 19:06:35 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/02 12:55:28 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ int	fill_stack_a(t_push_swap *self, int number)
 	if (!self->stack_a->stack->push_unique(
 			self->stack_a->stack, new_node, self->stack_a->compare_node))
 	{
-		ps_node_content_destroy(&new_node);
+		ps_node_content_destroy(&content);
+		free(new_node);
+		new_node = NULL;
 		return (0);
 	}
 	return (1);

@@ -5,8 +5,11 @@ STACK = $(STACK_PATH)/libstack.a
 # ----------
 LIBSTR_PATH = src/libstr
 LIBSTR = $(LIBSTR_PATH)/libstr.a
+# ----------
+LIBGNL_PATH = src/libgnl
+LIBGNL = $(LIBGNL_PATH)/libgnl.a
 # ------------------------ Commands -------------------------------
-INCLUDES = -I ./includes -I $(STACK_PATH)/includes -I $(LIBSTR_PATH)/includes
+INCLUDES = -I ./includes -I $(STACK_PATH)/includes -I $(LIBSTR_PATH)/includes -I $(LIBGNL_PATH)/includes
 CC = cc
 CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
 SLEEP = 0.07
@@ -19,7 +22,7 @@ SRC_FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \
 OBJ = obj
 OBJ_FILES := $(SRC_FILES:%.c=$(OBJ)/%.o)
 DEPENDENCY_OBJS = dependency_objs
-DEPENDENCY_LIBS = $(STACK) $(LIBSTR)
+DEPENDENCY_LIBS = $(STACK) $(LIBSTR) $(LIBGNL)
 DEPENDENCY_INCLUDES = dependency_includes
 
 # ******************* Main targets *******************
@@ -31,6 +34,8 @@ $(NAME): $(DEPENDENCY_INCLUDES) $(OBJ_FILES)
 	@cp -rf $(STACK_PATH)/includes/* $(DEPENDENCY_INCLUDES)
 	@echo ">> copying inludes from './libft/$(LIBSTR_PATH)' to '$(DEPENDENCY_INCLUDES)'..." && sleep $(SLEEP)
 	@cp -rf $(LIBSTR_PATH)/includes/* $(DEPENDENCY_INCLUDES)
+	@echo ">> copying inludes from './libft/$(LIBGNL_PATH)' to '$(DEPENDENCY_INCLUDES)'..." && sleep $(SLEEP)
+	@cp -rf $(LIBGNL_PATH)/includes/* $(DEPENDENCY_INCLUDES)
 # -------------- extracting 'files.o' -----------------------------------------
 	@echo ">> extracting 'files.o' from './libft/$(STACK)' to '$(DEPENDENCY_OBJS)'..." && sleep $(SLEEP)
 	@ar x $(STACK) --output $(DEPENDENCY_OBJS)
@@ -49,6 +54,10 @@ $(STACK):
 $(LIBSTR):
 	@echo ">> compiling ./libft/$@..." && sleep $(SLEEP)
 	@make -s -C $(LIBSTR_PATH)
+
+$(LIBGNL):
+	@echo ">> compiling ./libft/$@..." && sleep $(SLEEP)
+	@make -s -C $(LIBGNL_PATH)
 # --------------------------------------------
 
 # ------------- Obrigatory files on root -------------
@@ -74,6 +83,8 @@ clean:
 	@make -s -C $(STACK_PATH) clean
 	@echo ">> cleanning './libft/$(LIBSTR_PATH)'..." && sleep $(SLEEP)
 	@make -s -C $(LIBSTR_PATH) clean
+	@echo ">> cleanning './libft/$(LIBGNL_PATH)'..." && sleep $(SLEEP)
+	@make -s -C $(LIBGNL_PATH) clean
 	@echo ">> cleanning './libft/'..." && sleep $(SLEEP)
 	@rm -rf $(OBJ) $(DEPENDENCY_OBJS) $(DEPENDENCY_INCLUDES)
 
@@ -82,6 +93,8 @@ fclean: clean
 	@make -s -C $(STACK_PATH) fclean
 	@echo ">> deletting './libft/$(LIBSTR)'..." && sleep $(SLEEP)
 	@make -s -C $(LIBSTR_PATH) fclean
+	@echo ">> deletting './libft/$(NAME)'..." && sleep $(SLEEP)
+	@make -s -C $(LIBGNL_PATH) fclean
 	@echo ">> deletting './libft/$(NAME)'..." && sleep $(SLEEP)
 	@rm -rf $(NAME)
 

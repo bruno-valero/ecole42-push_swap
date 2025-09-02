@@ -6,11 +6,12 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
-/*   Updated: 2025/09/01 18:49:10 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:06:43 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+# include <stdio.h>
 
 
 /**
@@ -34,18 +35,15 @@ int	main(int argc, char **argv)
 {
 	t_push_swap	*push_swap;
 
-	if (argc < 2)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+	if (argc == 1)
+		return (0);
 	push_swap = new_push_swap();
 	if (!push_swap->extract_input(push_swap, argc, argv))
 	{
 		write(2, "Error\n", 6);
+		push_swap->destroy(&push_swap);
 		return (1);
 	}
-	// print_stack(push_swap->stack_a);
 	push_swap->turk_sort->run(push_swap);
 	push_swap->destroy(&push_swap);
 	return (0);

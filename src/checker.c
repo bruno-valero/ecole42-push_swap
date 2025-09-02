@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/18 19:59:37 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 18:50:36 by brunofer         ###   ########.fr       */
+/*   Created: 2025/08/21 01:06:16 by valero            #+#    #+#             */
+/*   Updated: 2025/09/02 15:35:06 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 #include <stdio.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	**str;
-
-	str = ft_split("ola eu sou o bruno", ' ');
-	printf("[0]: %s\n", str[0]);
-	printf("[1]: %s\n", str[1]);
-	printf("[2]: %s\n", str[2]);
-	printf("[3]: %s\n", str[3]);
-	printf("[4]: %s\n", str[4]);
+	t_push_swap	*push_swap;
+	char *str;
+	str = malloc(11);
+	read(0, str, 10);
+	printf("buffer: %s", str);
+	push_swap = new_push_swap();
+	if (!push_swap->extract_input(push_swap, argc, argv))
+	{
+		write(2, "Error\n", 6);
+		push_swap->destroy(&push_swap);
+		return (1);
+	}
+	// push_swap->turk_sort->run(push_swap);
+	push_swap->destroy(&push_swap);
+	return (0);
 }

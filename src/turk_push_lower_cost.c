@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:40:31 by valero            #+#    #+#             */
-/*   Updated: 2025/09/01 09:29:41 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/02 17:49:29 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,5 @@ int	push_lower_cost_node(t_push_swap *push_swap, int is_pb)
 		return (1);
 	}
 	push_swap->ops->pa(push_swap);
-	// if (valueof(push_swap->stack_a->stack->top)
-	// 	> valueof(push_swap->stack_a->stack->top->prev))
-	// 	push_swap->ops->sa(push_swap);
 	return (1);
 }

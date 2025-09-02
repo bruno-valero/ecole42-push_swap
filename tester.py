@@ -20,7 +20,7 @@ e rode `python3 tester.py`
 
 push_swap_path = "./push_swap"
 checker_path = "./checker_linux"
-run_with_valgrind = False				# Mude para True se quiser rodar com o valgrind
+run_with_valgrind = True				# Mude para True se quiser rodar com o valgrind
 
 # Essa variável vai controlar se vai mostrar o teste que ele fez que ocasionou
 # na maior quantidade de movimento e na menor
@@ -33,8 +33,7 @@ show_extreme_sequences = False
 # E por fim, vários testes com 10 números
 # Pode por quantos números quiser
 # Mas na régua só será testado: [3, 5, 100, 500]
-# test_groups = [500]
-test_groups = range(1, 501, 2)
+test_groups = [3, 5, 100, 500]
 
 
 # Aqui você deve por o range de números que deseja considerar ao fazer os testes
@@ -48,7 +47,7 @@ range_end = 2**31 - 1
 # números do `test_groups`
 # Se colocar muito, vai demorar demais para acabar
 # Padrão = 100
-test_num = 10
+test_num = 50
 
 
 # Daqui para baixo não precisa mexer

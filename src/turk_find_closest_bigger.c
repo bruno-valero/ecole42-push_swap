@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_find_closest_bigger.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valero <valero@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 13:10:27 by brunofer          #+#    #+#             */
-/*   Updated: 2025/08/31 14:37:41 by valero           ###   ########.fr       */
+/*   Updated: 2025/09/02 13:05:56 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ t_find_closest_result	turk_find_closest_bigger(t_stack_node *node,
 		continue_loop(&temps);
 	}
 	if (result.value == temp_node)
-	{
-		stack_delete_node(&temp_node, ps_node_content_destroy);
 		result.succeed = 0;
-	}
+	if (temp_node)
+		stack_delete_node(&temp_node, ps_node_content_destroy);
 	return (result);
 }

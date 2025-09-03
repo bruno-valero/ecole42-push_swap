@@ -6,10 +6,9 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 13:15:33 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 18:57:54 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:32:36 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef TURK_FIND_CLOSEST_H
 # define TURK_FIND_CLOSEST_H

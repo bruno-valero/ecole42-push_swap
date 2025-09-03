@@ -6,17 +6,23 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 19:59:37 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 18:50:36 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:03:11 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 int	main(void)
 {
 	char	**str;
+	char	*line;
+	int		fd;
 
+	fd = open("Makefile", 0);
+	line = get_next_line(fd);
+	printf("first_line: %s", line);
 	str = ft_split("ola eu sou o bruno", ' ');
 	printf("[0]: %s\n", str[0]);
 	printf("[1]: %s\n", str[1]);

@@ -6,13 +6,13 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:57:15 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/01 19:09:23 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:14:51 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps_stack	*new_ps_stack(int is_stack_a)
+t_ps_stack	*new_ps_stack(int is_stack_a, int print_moves)
 {
 	t_ps_stack	*ps_stack;
 
@@ -20,6 +20,7 @@ t_ps_stack	*new_ps_stack(int is_stack_a)
 	if (!ps_stack)
 		return (NULL);
 	ps_stack->is_stack_a = is_stack_a;
+	ps_stack->print_moves = print_moves;
 	ps_stack->bigger = 0;
 	ps_stack->smaller = 0;
 	ps_stack->stack = new_stack();

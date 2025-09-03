@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:45:50 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 18:57:20 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:24:12 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_ps_node_content	t_ps_node_content;
 struct s_ps_stack
 {
 	int					is_stack_a;
+	int					print_moves;
 	int					bigger;
 	int					smaller;
 	t_stack				*stack;
@@ -42,7 +43,7 @@ struct s_ps_node_content
 	int				self_stack_length;
 };
 
-t_ps_stack			*new_ps_stack(int is_stack_a);
+t_ps_stack			*new_ps_stack(int is_stack_a, int print_moves);
 t_ps_node_content	*new_ps_node_content(int number);
 void				ps_stack_destroy(t_ps_stack	**self);
 void				ps_stack_update_on_transfer(

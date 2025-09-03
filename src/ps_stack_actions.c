@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:00:30 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 19:00:25 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:33:52 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	ps_stack_update_on_transfer(t_ps_stack *self, t_ps_stack *other_stack)
 		other_stack->bigger = INT_MIN;
 	}
 	other_top_content = contentof(other_stack->stack->top);
-
 	if (self->bigger == other_top_content->value && self->stack->length)
 		self->bigger = contentof(find_ps_bigger_node(self, NULL))->value;
 	if (self->smaller == other_top_content->value && self->stack->length)

@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:10:19 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 19:00:21 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:26:22 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	swap_stack(t_ps_stack *ps_stack)
 	if (!ps_stack || !ps_stack->stack
 		|| !ps_stack->stack->swap_first_node(ps_stack->stack))
 		return (0);
+	if (!ps_stack->print_moves)
+		return (1);
 	if (ps_stack->is_stack_a)
 		return (!!write(1, "sa\n", 3));
 	return (!!write(1, "sb\n", 3));
@@ -36,6 +38,8 @@ int	swap_stack_both(t_push_swap *push_swap)
 		push_swap->stack_a->stack->swap_first_node(push_swap->stack_a->stack);
 		return (0);
 	}
+	if (!push_swap->print_moves)
+		return (1);
 	return (!!write(1, "ss\n", 3));
 }
 
@@ -56,7 +60,7 @@ int	push_stack1_to_stack2(t_push_swap *push_swap, int push_a_to_b)
 			return (0);
 		push_swap->stack_a->update_on_transfer(
 			push_swap->stack_a, push_swap->stack_b);
-		return (!!write(1, "pb\n", 3));
+		return (!push_swap->print_moves || !!write(1, "pb\n", 3));
 	}
 	transfer_succeeded = push_swap->stack_b->stack->transfer_top(
 			push_swap->stack_b->stack, push_swap->stack_a->stack);
@@ -64,5 +68,5 @@ int	push_stack1_to_stack2(t_push_swap *push_swap, int push_a_to_b)
 		return (0);
 	push_swap->stack_b->update_on_transfer(
 		push_swap->stack_b, push_swap->stack_a);
-	return (!!write(1, "pa\n", 3));
+	return (!push_swap->print_moves || !!write(1, "pa\n", 3));
 }

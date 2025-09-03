@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:22:05 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 12:55:28 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:20:23 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static t_push_swap_ops	*new_push_swap_ops(void);
 
-t_push_swap	*new_push_swap(void)
+t_push_swap	*new_push_swap(int print_moves)
 {
 	t_push_swap	*ps;
 
 	ps = malloc(sizeof(t_push_swap));
 	if (!ps)
 		return (NULL);
-	ps->stack_a = new_ps_stack(1);
-	ps->stack_b = new_ps_stack(0);
+	ps->stack_a = new_ps_stack(1, print_moves);
+	ps->stack_b = new_ps_stack(0, print_moves);
 	ps->ops = new_push_swap_ops();
 	ps->turk_sort = new_turk_sort(ps->stack_a, ps->stack_b);
 	if (!ps->stack_a || !ps->stack_b || !ps->ops || !ps->turk_sort)
@@ -31,6 +31,7 @@ t_push_swap	*new_push_swap(void)
 		ps->turk_sort->destroy(&ps->turk_sort);
 		return (ps->ops->destroy(&ps->ops));
 	}
+	ps->print_moves = print_moves;
 	ps->fill_stack_a = fill_stack_a;
 	ps->extract_input = extract_input;
 	ps->destroy = push_swap_destroy;

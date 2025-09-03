@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:26:49 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 15:07:07 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:19:54 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_push_swap		t_push_swap;
 */
 struct s_push_swap
 {
+	int				print_moves;
 	t_ps_stack		*stack_a;
 	t_ps_stack		*stack_b;
 	t_push_swap_ops	*ops;
@@ -48,7 +49,7 @@ int				push_stack1_to_stack2(t_push_swap *push_swap, int push_a_to_b);
 // ******************************************************
 
 // push swap
-t_push_swap		*new_push_swap(void);
+t_push_swap		*new_push_swap(int print_moves);
 void			push_swap_destroy(t_push_swap	**self);
 int				fill_stack_a(t_push_swap *self, int number);
 

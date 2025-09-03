@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:26:58 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 12:44:00 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:33:28 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	*ts_stack_destroy(t_ts_stack	**self_ref)
 {
 	if (!self_ref || !*self_ref)
 		return (NULL);
-	// (*self_ref)->ps_stack->destroy(&(*self_ref)->ps_stack);
 	free(*self_ref);
 	*self_ref = NULL;
 	return (NULL);

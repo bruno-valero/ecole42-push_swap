@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:31:24 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 19:00:18 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:23:13 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	rotate_stack(t_ps_stack *ps_sptack)
 	if (!ps_sptack || !ps_sptack->stack
 		|| !ps_sptack->stack->rotate(ps_sptack->stack, 0))
 		return (0);
+	if (!ps_sptack->print_moves)
+		return (1);
 	if (ps_sptack->is_stack_a)
 		return (!!write(1, "ra\n", 3));
 	return (!!write(1, "rb\n", 3));
@@ -36,6 +38,8 @@ int	rotate_stack_both(t_push_swap	*push_swap)
 		push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 1);
 		return (0);
 	}
+	if (!push_swap->print_moves)
+		return (1);
 	return (!!write(1, "rr\n", 3));
 }
 
@@ -44,6 +48,8 @@ int	rotate_reverse_stack(t_ps_stack *ps_stack)
 	if (!ps_stack || !ps_stack->stack
 		|| !ps_stack->stack->rotate(ps_stack->stack, 1))
 		return (0);
+	if (!ps_stack->print_moves)
+		return (1);
 	if (ps_stack->is_stack_a)
 		return (!!write(1, "rra\n", 4));
 	return (!!write(1, "rrb\n", 4));
@@ -63,5 +69,7 @@ int	rotate_reverse_stack_both(t_push_swap	*push_swap)
 		push_swap->stack_a->stack->rotate(push_swap->stack_a->stack, 0);
 		return (0);
 	}
+	if (!push_swap->print_moves)
+		return (1);
 	return (!!write(1, "rrr\n", 4));
 }

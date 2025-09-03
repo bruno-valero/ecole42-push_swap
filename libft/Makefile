@@ -41,6 +41,8 @@ $(NAME): $(DEPENDENCY_INCLUDES) $(OBJ_FILES)
 	@ar x $(STACK) --output $(DEPENDENCY_OBJS)
 	@echo ">> extracting 'files.o' from './libft/$(LIBSTR)' to '$(DEPENDENCY_OBJS)'..." && sleep $(SLEEP)
 	@ar x $(LIBSTR) --output $(DEPENDENCY_OBJS)
+	@echo ">> extracting 'files.o' from './libft/$(LIBGNL)' to '$(DEPENDENCY_OBJS)'..." && sleep $(SLEEP)
+	@ar x $(LIBGNL) --output $(DEPENDENCY_OBJS)
 # -------------- compiling 'libft.a' -----------------------------------------
 	@echo ">> compiling ./libft/$@..." && sleep $(SLEEP)
 	@ar rcs $@ $(OBJ_FILES) $(DEPENDENCY_OBJS)/*.o

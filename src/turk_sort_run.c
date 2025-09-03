@@ -6,14 +6,13 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:34:20 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 19:01:57 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:48:41 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	final_sort(t_push_swap *push_swap);
-static int	is_ordered(t_stack *stack_a);
 
 void	turk_run(t_push_swap *push_swap)
 {
@@ -36,9 +35,7 @@ void	turk_run(t_push_swap *push_swap)
 	turk_sort_three(push_swap->turk_sort->ts_stack_a, push_swap);
 	while (stack_b->length)
 		push_lower_cost_node(push_swap, 0);
-	// printf("is_ordered: %d\n", is_ordered(push_swap->stack_a->stack));
 	final_sort(push_swap);
-	// printf("is_ordered: %d\n", is_ordered(push_swap->stack_a->stack));
 }
 
 static void	final_sort(t_push_swap *push_swap)
@@ -63,7 +60,7 @@ static void	final_sort(t_push_swap *push_swap)
 			push_swap->ops->rra(push_swap);
 }
 
-static int	is_ordered(t_stack *stack_a)
+int	is_ordered(t_stack *stack_a)
 {
 	t_stack_node	*top;
 	t_stack_node	*bot;

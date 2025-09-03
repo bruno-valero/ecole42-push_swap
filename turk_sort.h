@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 22:12:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 18:58:13 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:46:42 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void		*ts_stack_destroy(t_ts_stack	**self_ref);
 int			turk_sort_three(t_ts_stack *self, t_push_swap *push_swap);
 int			turk_sort_two(t_ts_stack *self, t_push_swap *push_swap);
 void		turk_run(t_push_swap *push_swap);
+int			is_ordered(t_stack *stack_a);
 
 #endif

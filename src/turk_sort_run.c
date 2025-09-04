@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:34:20 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/03 13:48:41 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:22:52 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	is_ordered(t_stack *stack_a)
 			return (0);
 		if (bot && valueof(bot) < valueof(bot->next))
 			return (0);
+		if (stack_a->length == 2)
+			break ;
 		top = top->prev;
 		bot = bot->next;
 	}

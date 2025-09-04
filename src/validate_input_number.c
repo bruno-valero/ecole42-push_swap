@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:44:56 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 19:01:57 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:45:30 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ int	extract_input(t_push_swap *self, int argc, char **argv)
 			result = extract_input_unique(self, argv[argc]);
 		}
 	}
-	if (!result)
-		self->destroy(&self);
 	return (result);
 }
 

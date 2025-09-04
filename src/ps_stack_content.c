@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:54:42 by brunofer          #+#    #+#             */
-/*   Updated: 2025/09/02 19:00:28 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:31:31 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	compare_ps_node(void *self_content, void *content)
 
 	s_cont = (t_ps_node_content *)self_content;
 	cont = (t_ps_node_content *)content;
-	return (s_cont->value == (cont)->value);
+	return (s_cont->value == cont->value);
 }
 
 /**

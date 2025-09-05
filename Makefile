@@ -17,7 +17,7 @@ SRC_FILES = src/ops_rotate_stacks.c src/ops_swap_stacks.c src/ps_stack_actions.c
 
 TEST_PROGRAM=src/teste.c
 MAIN_PROGRAM=src/main.c
-BONUS_PROGRAM=src/checker.c
+BONUS_PROGRAM=src/checker_bonus.c
 
 SLEEP = 0.07
 
